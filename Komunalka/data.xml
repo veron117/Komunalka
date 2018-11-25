@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<komunalka>
+  <period month="март" year="2017" id="1">
+    <job id="tech">
+      <namejob>Техническое обслуживание</namejob>
+      <count>46,1</count>
+      <unit>месяц</unit>
+      <price>8,69</price>
+      <summa>400,61</summa>
+    </job>
+    <job id="energy">
+      <namejob>Э/энергия</namejob>
+      <count>500</count>
+      <room1>100</room1>
+      <room2>200</room2>
+      <room3>200</room3>
+      <unit>кВт</unit>
+      <price>6</price>
+      <summa>3000</summa>
+    </job>
+    <job id="heat">
+      <namejob>Отопление</namejob>
+      <count>46,1</count>
+      <unit>Гкал</unit>
+      <price>39,04</price>
+      <summa>1799,74</summa>
+    </job>
+    <job id="water">
+      <namejob>Водоснабжение</namejob>
+      <count>56,6</count>
+      <unit>м3</unit>
+      <price>10</price>
+      <summa>566</summa>
+    </job>
+  </period>
+  <period month="март" year="2018" id="2">
+    <job id="tech">
+      <namejob>Техническое обслуживание</namejob>
+      <count>46,1</count>
+      <unit>месяц</unit>
+      <price>8,69</price>
+      <summa>400,61</summa>
+    </job>
+    <job id="energy">
+      <namejob>Э/энергия</namejob>
+      <count>1000</count>
+      <room1>200</room1>
+      <room2>400</room2>
+      <room3>400</room3>
+      <unit>кВт</unit>
+      <price>6</price>
+      <summa>3000</summa>
+    </job>
+    <job id="heat">
+      <namejob>Отопление</namejob>
+      <count>46,1</count>
+      <unit>Гкал</unit>
+      <price>39,04</price>
+      <summa>179999,74</summa>
+    </job>
+    <job id="water">
+      <namejob>Водоснабжение</namejob>
+      <count>56,6</count>
+      <unit>м3</unit>
+      <price>10</price>
+      <summa>566</summa>
+    </job>
+  </period>
+  <period month="март" year="2019" id="3">
+      <job id="tech">
+        <namejob>Техническое обслуживание</namejob>
+        <count>3333</count>
+        <unit>месяц</unit>
+        <price>3</price>
+        <summa>9999</summa>
+      </job>
+      <job id="energy">
+        <namejob>Э/энергия</namejob>
+        <count>9899</count>
+        <room1>3333</room1>
+        <room2>3333</room2>
+        <room3>3233</room3>
+        <unit>кВт</unit>
+        <price>3</price>
+        <summa>26697</summa>
+      </job>
+      <job id="heat">
+        <namejob>Отопление</namejob>
+        <count>3333</count>
+        <unit>Гкал</unit>
+        <price>3</price>
+        <summa>9999</summa>
+      </job>
+      <job id="water">
+        <namejob>Водоснабжение</namejob>
+        <count>3333</count>
+        <unit>м3</unit>
+        <price>3</price>
+        <summa>9829,2</summa>
+      </job>
+    </period>
+</komunalka>
