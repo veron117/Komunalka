@@ -1,22 +1,12 @@
-﻿using System;
+﻿using LingvoNET;
+using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Xps;
-using System.Windows.Xps.Packaging;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using System.Xml.Linq;
-using System.IO;
-using LingvoNET;
 
 namespace Komunalka
 {
@@ -34,7 +24,7 @@ namespace Komunalka
             var frm = (MainWindow)Owner;
             hide.Text = frm.hide.Text;
             var x = hide.Text.Replace(" ", ":");
-            var arr = x.Split(new char[] { ':' });
+            var arr = x.Split(':');
 
             Title = "Просмотр коммунальных услуг за " + arr[1] + " " + arr[2];
             info_title.Text = "Общие сведения: коммунальные услуги за " + arr[1] + " " + arr[2];
@@ -46,8 +36,8 @@ namespace Komunalka
                 {
                     if (el.Attribute("month").Value == arr[1] && el.Attribute("year").Value == arr[2])
                     {
-                        var old = new Xml_data();
-                        var old_data = old.OldData(el.Attribute("id").Value);
+                        var old = new XmlData();
+                        var oldData = XmlData.OldData(el.Attribute("id").Value);
                         foreach (var elem in el.Elements())
                         {
                             if (elem.Attribute("id").Value == "tech")
@@ -63,9 +53,9 @@ namespace Komunalka
                                 techsummroom1 = Math.Round(techsummroom1, 2);
                                 techsummroom2 = Math.Round(techsummroom2, 2);
                                 techsummroom3 = Math.Round(techsummroom3, 2);
-                                techSumRoom1.Text = "Администрация: " + techsummroom1.ToString() + " руб.";
-                                techSumRoom2.Text = "Компьютерный зал: " + techsummroom2.ToString() + " руб.";
-                                techSumRoom3.Text = "Парикмахерская: " + techsummroom3.ToString() + " руб.";
+                                techSumRoom1.Text = "Администрация: " + techsummroom1 + " руб.";
+                                techSumRoom2.Text = "Компьютерный зал: " + techsummroom2 + " руб.";
+                                techSumRoom3.Text = "Парикмахерская: " + techsummroom3 + " руб.";
                                 
                                 adminTechCount.Text = "11,6";
                                 compTechCount.Text = "17,8";
@@ -82,39 +72,47 @@ namespace Komunalka
                             if (elem.Attribute("id").Value == "energy")
                             {
                                 energyName.Text = elem.Element("namejob").Value;
-                                var count = double.Parse(elem.Element("count").Value) - old_data.Item1;
+                                var count = double.Parse(elem.Element("count").Value) - oldData.Item1;
                                 energyCount.Text = count.ToString();
                                 energyUnit.Text = elem.Element("unit").Value;
                                 energyPrice.Text = elem.Element("price").Value;
                                 energySum.Text = elem.Element("summa").Value;
 
-                                double countroom1 = double.Parse(elem.Element("room1").Value) - old_data.Item2,
-                                       countroom2 = double.Parse(elem.Element("room2").Value) - old_data.Item3,
-                                       countroom3 = double.Parse(elem.Element("room3").Value) - old_data.Item4;
-                                countRoom1.Text = "Администрация: " + countroom1.ToString() + " кВт";
-                                countRoom2.Text = "Компьютерный зал: " + countroom2.ToString() + " кВт";
-                                countRoom3.Text = "Парикмахерская: " + countroom3.ToString() + " кВт";
+                                double countroom1 = double.Parse(elem.Element("room1").Value) - oldData.Item2,
+                                       countroom2 = double.Parse(elem.Element("room2").Value) - oldData.Item3,
+                                       countroom3 = double.Parse(elem.Element("room3").Value) - oldData.Item4,
+                                       countroom4 = double.Parse(elem.Element("room4")?.Value ?? "0") - oldData.Item5;
+                                countRoom1.Text = "Администрация: " + countroom1 + " кВт";
+                                countRoom2.Text = "Компьютерный зал: " + countroom2 + " кВт";
+                                countRoom3.Text = "Парикмахерская: " + countroom3 + " кВт";
+                                countRoom4.Text = "Швея: " + countroom4 + " кВт";
                                 double energysummroom1 = countroom1 * double.Parse(elem.Element("price").Value),
                                        energysummroom2 = countroom2 * double.Parse(elem.Element("price").Value),
-                                       energysummroom3 = countroom3 * double.Parse(elem.Element("price").Value);
+                                       energysummroom3 = countroom3 * double.Parse(elem.Element("price").Value),
+                                       energysummroom4 = countroom4 * double.Parse(elem.Element("price").Value);
                                 energysummroom1 = Math.Round(energysummroom1, 2);
                                 energysummroom2 = Math.Round(energysummroom2, 2);
                                 energysummroom3 = Math.Round(energysummroom3, 2);
-                                energySumRoom1.Text = "Администрация: " + energysummroom1.ToString() + " руб.";
-                                energySumRoom2.Text = "Компьютерный зал: " + energysummroom2.ToString() + " руб.";
-                                energySumRoom3.Text = "Парикмахерская: " + energysummroom3.ToString() + " руб.";
+                                energysummroom4 = Math.Round(energysummroom4, 2);
+                                energySumRoom1.Text = "Администрация: " + energysummroom1 + " руб.";
+                                energySumRoom2.Text = "Компьютерный зал: " + energysummroom2 + " руб.";
+                                energySumRoom3.Text = "Парикмахерская: " + energysummroom3 + " руб.";
+                                energySumRoom4.Text = "Швея: " + energysummroom4 + " руб.";
 
                                 adminCount.Text = countroom1.ToString();
                                 compCount.Text = countroom2.ToString();
                                 barbCount.Text = countroom3.ToString();
+                                seamstressCount.Text = countroom4.ToString();
 
                                 adminPrice.Text = elem.Element("price").Value;
                                 compPrice.Text = elem.Element("price").Value;
                                 barbPrice.Text = elem.Element("price").Value;
+                                seamstressPrice.Text = elem.Element("price").Value;
 
                                 adminSum.Text = energysummroom1.ToString();
                                 compSum.Text = energysummroom2.ToString();
                                 barbSum.Text = energysummroom3.ToString();
+                                seamstressSum.Text = energysummroom4.ToString();
                             }
                             if (elem.Attribute("id").Value == "heat")
                             {
@@ -129,9 +127,9 @@ namespace Komunalka
                                 heatsummroom1 = Math.Round(heatsummroom1, 2);
                                 heatsummroom2 = Math.Round(heatsummroom2, 2);
                                 heatsummroom3 = Math.Round(heatsummroom3, 2);
-                                heatSumRoom1.Text = "Администрация: " + heatsummroom1.ToString() + " руб.";
-                                heatSumRoom2.Text = "Компьютерный зал: " + heatsummroom2.ToString() + " руб.";
-                                heatSumRoom3.Text = "Парикмахерская: " + heatsummroom3.ToString() + " руб.";
+                                heatSumRoom1.Text = "Администрация: " + heatsummroom1 + " руб.";
+                                heatSumRoom2.Text = "Компьютерный зал: " + heatsummroom2 + " руб.";
+                                heatSumRoom3.Text = "Парикмахерская: " + heatsummroom3 + " руб.";
 
                                 adminHeatCount.Text = "11,6";
                                 compHeatCount.Text = "17,8";
@@ -148,7 +146,7 @@ namespace Komunalka
                             if (elem.Attribute("id").Value == "water")
                             {
                                 waterName.Text = elem.Element("namejob").Value;
-                                var count = double.Parse(elem.Element("count").Value) - old_data.Item5;
+                                var count = double.Parse(elem.Element("count").Value) - oldData.Item5;
                                 waterCount.Text = count.ToString();
                                 waterUnit.Text = elem.Element("unit").Value;
                                 waterPrice.Text = elem.Element("price").Value;
@@ -160,7 +158,7 @@ namespace Komunalka
                     {
                     }
                 }
-                var total = Math.Round((double.Parse(techSum.Text) + double.Parse(energySum.Text) + double.Parse(heatSum.Text) + double.Parse(waterSum.Text)), 2);
+                var total = Math.Round(double.Parse(techSum.Text) + double.Parse(energySum.Text) + double.Parse(heatSum.Text) + double.Parse(waterSum.Text), 2);
                 TotalSum.Text = total.ToString();
 
                 //Заполнение даблицы По помещениям
@@ -177,9 +175,12 @@ namespace Komunalka
                 barbHeatTotalSum.Text = barbHeatSum.Text;
                 barbWaterTotalSum.Text = waterSum.Text;
 
-                adminTotalSum.Text = Math.Round((double.Parse(adminTechTotalSum.Text) + double.Parse(adminEnergyTotalSum.Text) + double.Parse(adminHeatTotalSum.Text)), 2).ToString();
-                compTotalSum.Text = Math.Round((double.Parse(compTechTotalSum.Text) + double.Parse(compEnergyTotalSum.Text) + double.Parse(compHeatTotalSum.Text)), 2).ToString();
-                barbTotalSum.Text = Math.Round((double.Parse(barbTechTotalSum.Text) + double.Parse(barbEnergyTotalSum.Text) + double.Parse(barbHeatTotalSum.Text) + double.Parse(waterSum.Text)), 2).ToString();
+                seamstressEnergyTotalSum.Text = seamstressSum.Text;
+
+                adminTotalSum.Text = Math.Round(double.Parse(adminTechTotalSum.Text) + double.Parse(adminEnergyTotalSum.Text) + double.Parse(adminHeatTotalSum.Text), 2).ToString();
+                compTotalSum.Text = Math.Round(double.Parse(compTechTotalSum.Text) + double.Parse(compEnergyTotalSum.Text) + double.Parse(compHeatTotalSum.Text), 2).ToString();
+                barbTotalSum.Text = Math.Round(double.Parse(barbTechTotalSum.Text) + double.Parse(barbEnergyTotalSum.Text) + double.Parse(barbHeatTotalSum.Text) + double.Parse(waterSum.Text), 2).ToString();
+                seamstressTotalSum.Text = seamstressEnergyTotalSum.Text;
             }
             catch (Exception ex)
             {
@@ -232,9 +233,9 @@ namespace Komunalka
                     {
                         if (el.Attribute("month")?.Value == arr[1] && el.Attribute("year")?.Value == arr[2])
                         {
-                            var old = new Xml_data();
-                            var oldData = old.OldData(el.Attribute("id")?.Value);
-                            var oldDate = oldData.Item6 != "" ? oldData.Item6.Split(':') : new []{ "1", "январь", arr[2] };
+                            var old = new XmlData();
+                            var oldData = XmlData.OldData(el.Attribute("id")?.Value);
+                            var oldDate = oldData.Item7 != "" ? oldData.Item7.Split(':') : new []{ "1", "январь", arr[2] };
                             foreach (var elem in el.Elements())
                             {
                                 if (elem.Attribute("id")?.Value != "energy") continue;
@@ -265,6 +266,11 @@ namespace Komunalka
                                         Data = oldData.Item4.ToString(),
                                         Label = "{old_barb}"
                                     },
+                                    new DocumentsData
+                                    {
+                                        Data = oldData.Item5.ToString(),
+                                        Label = "{old_seamstress}"
+                                    },
                                     //Новые показания
                                     new DocumentsData
                                     {
@@ -281,6 +287,11 @@ namespace Komunalka
                                         Data = elem.Element("room3")?.Value,
                                         Label = "{new_barb}"
                                     },
+                                    new DocumentsData
+                                    {
+                                        Data = elem.Element("room4")?.Value,
+                                        Label = "{new_seamstress}"
+                                    },
                                     //Результаты по кабинетам
                                     new DocumentsData
                                     {
@@ -296,6 +307,11 @@ namespace Komunalka
                                     {
                                         Data = (double.Parse(elem.Element("room3")?.Value ?? throw new InvalidOperationException()) - oldData.Item4).ToString(),
                                         Label = "{result_barb}"
+                                    },
+                                    new DocumentsData
+                                    {
+                                        Data = (double.Parse(elem.Element("room4")?.Value ?? throw new InvalidOperationException()) - oldData.Item5).ToString(),
+                                        Label = "{result_seamstress}"
                                     },
                                     //Иотоговый результат
                                     new DocumentsData
@@ -324,11 +340,13 @@ namespace Komunalka
         {
             Hide();
             var frm = (MainWindow)Owner;
-            var editform = new EditForm();
-            editform.Owner = this;
-            editform.ShowInTaskbar = true;
+            var editform = new EditForm
+            {
+                Owner = this,
+                ShowInTaskbar = true
+            };
             editform.ShowDialog();
-            var data = new Xml_data();
+            var data = new XmlData();
             frm.dataXml.ItemsSource = data.RefresheData();
             frm.hide.Text = hide.Text;
             Window_Loaded(sender, e);
@@ -339,7 +357,7 @@ namespace Komunalka
         {
             var frm = (MainWindow)Owner;
             var x = hide.Text.Replace(" ", ":");
-            var arr = x.Split(new char[] { ':' });
+            var arr = x.Split(':');
             var confirm = MessageBox.Show("Вы уверены что хотите удалить запись " + hide.Text, "Удаление", MessageBoxButton.YesNo);
             if (confirm == MessageBoxResult.Yes)
             {
@@ -348,7 +366,7 @@ namespace Komunalka
                 var period = doc.Root.Descendants("period").Where(t => t.Attribute("month").Value == arr[1] && t.Attribute("year").Value == arr[2]);
                 period.Remove();
                 doc.Save(filename);
-                var data = new Xml_data();
+                var data = new XmlData();
                 frm.dataXml.ItemsSource = data.RefresheData();
                 Close();
             }

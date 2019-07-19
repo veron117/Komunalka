@@ -8,15 +8,15 @@ using System.Xml.Linq;
 
 namespace Komunalka
 {
-    class Xml_data
+    public class XmlData
     {
-        ObservableCollection<string> dataxml { get; set; }
-        public ObservableCollection<string> RefresheData()
+        private ObservableCollection<string> DataXml { get; set; }
+        public IEnumerable<string> RefresheData()
         {
-            string filename = "data.xml";
-            XDocument doc = XDocument.Load(filename);
-            dataxml = new ObservableCollection<string>();
-            foreach (XElement el in doc.Root.Elements())
+            const string filename = "data.xml";
+            var doc = XDocument.Load(filename);
+            DataXml = new ObservableCollection<string>();
+            foreach (var el in doc.Root.Elements())
             {
                 if (el.Attribute("day") == null)
                 {
@@ -24,13 +24,13 @@ namespace Komunalka
                     doc.Save(filename);
                 }
                 string item = el.Attribute("month")?.Value + ' ' + el.Attribute("year")?.Value;
-                dataxml.Add("За " + item);
+                DataXml.Add("За " + item);
             }
-            return dataxml;
+            return DataXml;
         }
-        public Tuple<double, double, double, double> Energy()
+        public static Tuple<double, double, double, double, double> Energy()
         {
-            double count = 0, room1 = 0, room2 = 0, room3 = 0;
+            double count = 0, room1 = 0, room2 = 0, room3 = 0, room4 = 0;
             string filename = "data.xml";
             XDocument xDoc = XDocument.Load(filename);
             XElement attr = xDoc.Root.Elements().LastOrDefault();
@@ -40,6 +40,7 @@ namespace Komunalka
                 room1 = 0;
                 room2 = 0;
                 room3 = 0;
+                room4 = 0;
             }
             else
             {
@@ -47,16 +48,17 @@ namespace Komunalka
                 {
                     if (el.Attribute("id").Value == "energy")
                     {
-                        count = double.Parse(el.Element("count").Value);
-                        room1 = double.Parse(el.Element("room1").Value);
-                        room2 = double.Parse(el.Element("room2").Value);
-                        room3 = double.Parse(el.Element("room3").Value);
+                        count = double.Parse(el.Element("count")?.Value ?? "0");
+                        room1 = double.Parse(el.Element("room1")?.Value ?? "0");
+                        room2 = double.Parse(el.Element("room2")?.Value ?? "0");
+                        room3 = double.Parse(el.Element("room3")?.Value ?? "0");
+                        room4 = double.Parse(el.Element("room4")?.Value ?? "0");
                     }
                 }
             }
-            return Tuple.Create(count, room1, room2, room3);
+            return Tuple.Create(count, room1, room2, room3, room4);
         }
-        public double Water()
+        public static double Water()
         {
             double result = 0;
             string filename = "data.xml";
@@ -79,16 +81,17 @@ namespace Komunalka
             }
             return result;
         }
-        public Tuple<double, double, double, double, double, string> OldData(string id)
+
+        public static Tuple<double, double, double, double, double, double, string> OldData(string id)
         {
-            double count = 0, room1 = 0, room2 = 0, room3 = 0,  water = 0;
-            string date = "";
-            int prevId = Int32.Parse(id);
+            double count = 0, room1 = 0, room2 = 0, room3 = 0, room4 = 0,  water = 0;
+            var date = "";
+            var prevId = int.Parse(id);
             --prevId;
-            string curId = prevId.ToString();
-            string filename = "data.xml";
-            XDocument xDoc = XDocument.Load(filename);
-            foreach (XElement el in xDoc.Root.Elements())
+            var curId = prevId.ToString();
+            const string filename = "data.xml";
+            var xDoc = XDocument.Load(filename);
+            foreach (var el in xDoc.Root.Elements())
             {
                 if (el.Attribute("id").Value == curId)
                 {
@@ -97,10 +100,11 @@ namespace Komunalka
                     {
                         if (element.Attribute("id").Value == "energy")
                         {
-                            count = double.Parse(element.Element("count").Value);
-                            room1 = double.Parse(element.Element("room1").Value);
-                            room2 = double.Parse(element.Element("room2").Value);
-                            room3 = double.Parse(element.Element("room3").Value);
+                            count = double.Parse(element.Element("count")?.Value ?? "0");
+                            room1 = double.Parse(element.Element("room1")?.Value ?? "0");
+                            room2 = double.Parse(element.Element("room2")?.Value ?? "0");
+                            room3 = double.Parse(element.Element("room3")?.Value ?? "0");
+                            room4 = double.Parse(element.Element("room4")?.Value ?? "0");
                         }
                         if (element.Attribute("id").Value == "water")
                         {
@@ -109,7 +113,7 @@ namespace Komunalka
                     }
                 }
             }
-            return Tuple.Create(count, room1, room2, room3, water, date);
+            return Tuple.Create(count, room1, room2, room3, room4, water, date);
         }/**/
     }
 }

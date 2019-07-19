@@ -28,7 +28,7 @@ namespace Komunalka
 
         #region Private members
 
-        private double count, price, sum;
+        private double _count, _price, _sum;
 
         #endregion
 
@@ -75,11 +75,12 @@ namespace Komunalka
 
                         if (elem.Attribute("id").Value == "energy")
                         {
-                            energyRoom1.Text = elem.Element("room1").Value;
-                            energyRoom2.Text = elem.Element("room2").Value;
-                            energyRoom3.Text = elem.Element("room3").Value;
-                            energyPrice.Text = elem.Element("price").Value;
-                            energySum.Text = elem.Element("summa").Value;
+                            energyRoom1.Text = elem.Element("room1")?.Value ?? "0";
+                            energyRoom2.Text = elem.Element("room2")?.Value ?? "0";
+                            energyRoom3.Text = elem.Element("room3")?.Value ?? "0";
+                            energyRoom4.Text = elem.Element("room4")?.Value ?? "0";
+                            energyPrice.Text = elem.Element("price")?.Value ?? "0";
+                            energySum.Text = elem.Element("summa")?.Value ?? "0";
                         }
 
                         if (elem.Attribute("id").Value == "heat")
@@ -108,15 +109,13 @@ namespace Komunalka
         {
             try
             {
-                Double x;
-
                 var conv = new KeyConverter();
                 var key = conv.ConvertToString(e.Key).Replace("NumPad", "");
                 if (key == "OemPeriod" || key == "OemComma" || key == "Decimal")
                 {
                     key = "0";
                 }
-                if (double.TryParse(key, out x))
+                if (double.TryParse(key, out _))
                 {
                 }
                 else
@@ -136,10 +135,10 @@ namespace Komunalka
             {
                 techCount.Text = techCount.Text.Replace(".", ",");
                 techCount.SelectionStart = techCount.Text.Length;
-                count = double.Parse(techCount.Text);
-                price = double.Parse(techPrice.Text);
-                sum = Math.Round((count * price), 2);
-                techSum.Text = sum.ToString();
+                _count = double.Parse(techCount.Text);
+                _price = double.Parse(techPrice.Text);
+                _sum = Math.Round(_count * _price, 2);
+                techSum.Text = _sum.ToString();
             }
             catch (Exception ex)
             {
@@ -153,10 +152,10 @@ namespace Komunalka
             {
                 techPrice.Text = techPrice.Text.Replace(".", ",");
                 techPrice.SelectionStart = techPrice.Text.Length;
-                count = double.Parse(techCount.Text);
-                price = double.Parse(techPrice.Text);
-                sum = Math.Round((count * price), 2);
-                techSum.Text = sum.ToString();
+                _count = double.Parse(techCount.Text);
+                _price = double.Parse(techPrice.Text);
+                _sum = Math.Round(_count * _price, 2);
+                techSum.Text = _sum.ToString();
             }
             catch (Exception ex)
             {
@@ -168,7 +167,7 @@ namespace Komunalka
         {
             try
             {
-                double admin, comp, barb, allRoom;
+                double admin, comp, barb, seamstress, allRoom;
 
                 if (energyRoom1.Text == "" || energyRoom1.Text.Substring(0, 1) == ",")
                 {
@@ -182,6 +181,10 @@ namespace Komunalka
                 {
                     energyRoom3.Text = "0";
                 }
+                if (energyRoom4.Text == "" || energyRoom4.Text.Substring(0, 1) == ",")
+                {
+                    energyRoom4.Text = "0";
+                }
 
                 energyRoom1.Text = energyRoom1.Text.Replace(".", ",").Replace(" ", "");
                 energyRoom1.SelectionStart = energyRoom1.Text.Length;
@@ -189,12 +192,15 @@ namespace Komunalka
                 energyRoom2.SelectionStart = energyRoom2.Text.Length;
                 energyRoom3.Text = energyRoom3.Text.Replace(".", ",").Replace(" ", "");
                 energyRoom3.SelectionStart = energyRoom3.Text.Length;
+                energyRoom4.Text = energyRoom4.Text.Replace(".", ",").Replace(" ", "");
+                energyRoom4.SelectionStart = energyRoom4.Text.Length;
 
                 admin = double.Parse(energyRoom1.Text);
                 comp = double.Parse(energyRoom2.Text);
                 barb = double.Parse(energyRoom3.Text);
+                seamstress = double.Parse(energyRoom4.Text);
 
-                allRoom = Math.Round((admin + comp + barb), 2);
+                allRoom = Math.Round(admin + comp + barb + seamstress, 2);
                 energyCount.Text = allRoom.ToString();
             }
             catch (Exception ex)
@@ -207,14 +213,13 @@ namespace Komunalka
         {
             try
             {
-                var old = new Xml_data();
-                var old_count = old.OldData(hideId.Text);
+                var oldCount = XmlData.OldData(hideId.Text);
                 energyCount.Text = energyCount.Text.Replace(".", ",");
                 energyCount.SelectionStart = energyCount.Text.Length;
-                count = double.Parse(energyCount.Text);
-                price = double.Parse(energyPrice.Text);
-                sum = Math.Round(((count - old_count.Item1) * price), 2);
-                energySum.Text = sum.ToString();
+                _count = double.Parse(energyCount.Text);
+                _price = double.Parse(energyPrice.Text);
+                _sum = Math.Round((_count - oldCount.Item1) * _price, 2);
+                energySum.Text = _sum.ToString();
             }
             catch (Exception ex)
             {
@@ -226,14 +231,13 @@ namespace Komunalka
         {
             try
             {
-                var old = new Xml_data();
-                var old_count = old.OldData(hideId.Text);
+                var oldCount = XmlData.OldData(hideId.Text);
                 energyPrice.Text = energyPrice.Text.Replace(".", ",");
                 energyPrice.SelectionStart = energyPrice.Text.Length;
-                count = double.Parse(energyCount.Text);
-                price = double.Parse(energyPrice.Text);
-                sum = Math.Round(((count - old_count.Item1) * price), 2);
-                energySum.Text = sum.ToString();
+                _count = double.Parse(energyCount.Text);
+                _price = double.Parse(energyPrice.Text);
+                _sum = Math.Round((_count - oldCount.Item1) * _price, 2);
+                energySum.Text = _sum.ToString();
             }
             catch (Exception ex)
             {
@@ -266,8 +270,8 @@ namespace Komunalka
                 energySumm = double.Parse(energySum.Text);
                 heatSumm = double.Parse(heatSum.Text);
                 waterSumm = double.Parse(waterSum.Text);
-                result = Math.Round((techSumm + energySumm + heatSumm + waterSumm), 2);
-                allSum.Text = result.ToString() + " руб.";
+                result = Math.Round(techSumm + energySumm + heatSumm + waterSumm, 2);
+                allSum.Text = result + " руб.";
             }
             catch (Exception ex)
             {
@@ -281,10 +285,10 @@ namespace Komunalka
             {
                 heatCount.Text = heatCount.Text.Replace(".", ",");
                 heatCount.SelectionStart = heatCount.Text.Length;
-                count = double.Parse(heatCount.Text);
-                price = double.Parse(heatPrice.Text);
-                sum = Math.Round((count * price), 2);
-                heatSum.Text = sum.ToString();
+                _count = double.Parse(heatCount.Text);
+                _price = double.Parse(heatPrice.Text);
+                _sum = Math.Round(_count * _price, 2);
+                heatSum.Text = _sum.ToString();
             }
             catch (Exception ex)
             {
@@ -298,10 +302,10 @@ namespace Komunalka
             {
                 heatPrice.Text = heatPrice.Text.Replace(".", ",");
                 heatPrice.SelectionStart = heatPrice.Text.Length;
-                count = double.Parse(heatCount.Text);
-                price = double.Parse(heatPrice.Text);
-                sum = Math.Round((count * price), 2);
-                heatSum.Text = sum.ToString();
+                _count = double.Parse(heatCount.Text);
+                _price = double.Parse(heatPrice.Text);
+                _sum = Math.Round(_count * _price, 2);
+                heatSum.Text = _sum.ToString();
             }
             catch (Exception ex)
             {
@@ -313,14 +317,13 @@ namespace Komunalka
         {
             try
             {
-                var old = new Xml_data();
-                var old_count = old.OldData(hideId.Text);
+                var oldCount = XmlData.OldData(hideId.Text);
                 waterCount.Text = waterCount.Text.Replace(".", ",");
                 waterCount.SelectionStart = waterCount.Text.Length;
-                count = double.Parse(waterCount.Text);
-                price = double.Parse(waterPrice.Text);
-                sum = Math.Round(((count - old_count.Item5) * price), 2);
-                waterSum.Text = sum.ToString();
+                _count = double.Parse(waterCount.Text);
+                _price = double.Parse(waterPrice.Text);
+                _sum = Math.Round((_count - oldCount.Item5) * _price, 2);
+                waterSum.Text = _sum.ToString();
             }
             catch (Exception ex)
             {
@@ -332,14 +335,13 @@ namespace Komunalka
         {
             try
             {
-                var old = new Xml_data();
-                var old_count = old.OldData(hideId.Text);
+                var oldCount = XmlData.OldData(hideId.Text);
                 waterPrice.Text = waterPrice.Text.Replace(".", ",");
                 waterPrice.SelectionStart = waterPrice.Text.Length;
-                count = double.Parse(waterCount.Text);
-                price = double.Parse(waterPrice.Text);
-                sum = Math.Round(((count - old_count.Item5) * price), 2);
-                waterSum.Text = sum.ToString();
+                _count = double.Parse(waterCount.Text);
+                _price = double.Parse(waterPrice.Text);
+                _sum = Math.Round((_count - oldCount.Item5) * _price, 2);
+                waterSum.Text = _sum.ToString();
             }
             catch (Exception ex)
             {
@@ -356,7 +358,7 @@ namespace Komunalka
                     var form = (PrintForm)Owner;
                     hide.Text = form.hide.Text;
                     var x = hide.Text.Replace(" ", ":");
-                    var arr = x.Split(new char[] { ':' });
+                    var arr = x.Split(':');
                     var filename = "data.xml";
                     var xDoc = XDocument.Load(filename);
                     foreach (var el in xDoc.Root.Elements())
@@ -383,6 +385,7 @@ namespace Komunalka
                                     elem.Element("room1").Value = energyRoom1.Text;
                                     elem.Element("room2").Value = energyRoom2.Text;
                                     elem.Element("room3").Value = energyRoom3.Text;
+                                    elem.Element("room4").Value = energyRoom4.Text;
                                     elem.Element("unit").Value = "кВт";
                                     elem.Element("price").Value = energyPrice.Text;
                                     elem.Element("summa").Value = energySum.Text;

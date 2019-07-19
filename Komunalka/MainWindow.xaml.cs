@@ -22,22 +22,22 @@ namespace Komunalka
     /// </summary>
     public partial class MainWindow : Window
     {
-        ObservableCollection<string> dataxml;
+        ObservableCollection<string> _dataxml;
         public MainWindow()
         {
             InitializeComponent();
-            var data = new Xml_data();
+            var data = new XmlData();
             dataXml.ItemsSource = data.RefresheData();
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            addform addform = new addform
+            Addform addform = new Addform
             {
                 Owner = this,
                 ShowInTaskbar = true
             };
             addform.ShowDialog();
-            var data = new Xml_data();
+            var data = new XmlData();
             dataXml.ItemsSource = data.RefresheData();
         }
         private void dataXml_SelectionChanged(object sender, SelectionChangedEventArgs e)

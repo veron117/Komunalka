@@ -6,90 +6,390 @@
         xmlns:local="clr-namespace:Komunalka"
         mc:Ignorable="d"
         Loaded="Window_Loaded"
-        Title="" Height="510px" Width="750px" WindowStartupLocation="CenterScreen" Icon="logo.png" HorizontalContentAlignment="Stretch" FontFamily="Tahoma" ShowInTaskbar="False" SizeToContent="Width" ResizeMode="NoResize">
+        Title=""
+        TextElement.FontFamily="Tahoma"
+        WindowStartupLocation="CenterScreen" 
+        Icon="logo.png" 
+        HorizontalContentAlignment="Stretch"
+        ShowInTaskbar="False"
+        SizeToContent="Width" ResizeMode="NoResize" Height="500">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="250px"/>
-            <ColumnDefinition Width="250px"/>
-            <ColumnDefinition Width="250px"/>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="250"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="75px"/>
-            <RowDefinition Height="333px"/>
-            <RowDefinition Height="60px"/>
+            <RowDefinition Height="75"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="60"/>
         </Grid.RowDefinitions>
-        <TextBlock x:Name="hide" Visibility="Hidden"></TextBlock>
-        <TextBlock x:Name="hideId" Visibility="Hidden" />
-        <TextBlock HorizontalAlignment="Center" Margin="16,2,19,45" Grid.Row="0" Text="Платёжный период" Width="auto" VerticalAlignment="Center" FontFamily="Tahoma" FontSize="24" Grid.Column="0"/>
-        <TextBlock HorizontalAlignment="Center" Grid.Row="0" Text="Дата:" Width="auto" VerticalAlignment="Center" Margin="7,30,185.487,9" Grid.Column="0"></TextBlock>
-        <DatePicker HorizontalAlignment="Center"
-                    Margin="59,38,20,14"
-                    SelectedDate="{Binding PeriodDate, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
-                    VerticalAlignment="Center" 
-                    Width="171" Grid.Row="0" Grid.Column="0"/>
-        <TextBlock Width="auto" VerticalAlignment="Center" FontFamily="Tahoma" FontSize="18" Grid.Column="2" Grid.Row="0" Text="Общая сумма:" Margin="15,37,115,17"></TextBlock>
-        <TextBlock x:Name="allSum" HorizontalAlignment="Right" Height="32" Margin="0,37,16,0" Text="" VerticalAlignment="Top" FontSize="18" Grid.Column="2" Grid.Row="0" Width="99"/>
 
-        <Border BorderBrush="Black" BorderThickness="0,1,1,1" HorizontalAlignment="Left" Height="331" Grid.Row="1" Grid.Column="0" VerticalAlignment="Top" Width="250"/>
-        <TextBlock x:Name="tech" HorizontalAlignment="Center" Margin="0,5,0,0" Grid.Row="1" Grid.Column="0" Text="Техническое обслуживание" VerticalAlignment="Top" FontSize="16"/>
-        <TextBlock HorizontalAlignment="Left" Grid.Row="1" Grid.Column="0" Text="Кол-во: " Margin="23,48,0,264"/>
-        <TextBlock HorizontalAlignment="Left" Grid.Row="1" Grid.Column="0" Text="месяц" Margin="180,48,0,228"/>
-        <TextBox x:Name="techCount" HorizontalAlignment="Left" Margin="74,40,0,0" Grid.Row="1" Grid.Column="0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="100" KeyUp="techCount_KeyUp" KeyDown="Text_KeyDown" MaxLines="1"/>
-        <TextBlock HorizontalAlignment="Left" Grid.Row="1" Grid.Column="0" Text="Цена: " Margin="23,88,0,224"/>
-        <TextBlock HorizontalAlignment="Left" Grid.Row="1" Grid.Column="0" Text="руб." Margin="180,88,0,194"/>
-        <TextBox x:Name="techPrice" HorizontalAlignment="Left" Margin="74,80,0,0" Grid.Row="1" Grid.Column="0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="100" KeyUp="techPrice_KeyUp" KeyDown="Text_KeyDown" MaxLines="1"/>
-        <TextBlock HorizontalAlignment="Left" Grid.Row="1" Grid.Column="0" Text="Сумма: " Margin="23,128,0,184"/>
-        <TextBlock HorizontalAlignment="Left" Grid.Row="1" Grid.Column="0" Text="руб." Margin="180,128,0,158"/>
-        <TextBox x:Name="techSum" HorizontalAlignment="Left" Margin="74,120,0,0" Grid.Row="1" Grid.Column="0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="100" IsReadOnly="True" TextChanged="Sum_TextChanged"/>
+        <TextBlock Grid.Row="0" x:Name="hide" Visibility="Hidden"/>
+        <TextBlock Grid.Row="0" Grid.Column="0" x:Name="hideId" Visibility="Hidden" />
 
-        <Border BorderBrush="Black" BorderThickness="0,1" HorizontalAlignment="Left" Height="331" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Width="250"/>
-        <TextBlock x:Name="energy" HorizontalAlignment="Center" Margin="0,5,0,0" Grid.Row="1" Grid.Column="1" Text="Э/энергия" VerticalAlignment="Top" FontSize="16"/>
+        <Grid Grid.Row="0" Grid.ColumnSpan="3" Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock HorizontalAlignment="Center" Grid.Row="0" Text="Платёжный период" VerticalAlignment="Center" FontSize="24" Grid.Column="0"/>
+            <StackPanel HorizontalAlignment="Center"
+                        Orientation="Horizontal" Grid.Row="1" Grid.Column="0">
+                <TextBlock VerticalAlignment="Center"
+                           Text="Дата:"/>
+                <DatePicker HorizontalAlignment="Center" 
+                            VerticalAlignment="Center"
+                            Margin="5 0 0 0"
+                            SelectedDate="{Binding PeriodDate, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
+                            Width="171"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"
+                        Margin="5"
+                        Grid.Row="2"
+                        Grid.Column="2">
+                <TextBlock VerticalAlignment="Center"
+                           FontSize="18"
+                           Text="Общая сумма:"/>
+                <TextBlock x:Name="allSum"
+                           Margin="5 0 0 0"
+                           Text="" 
+                           VerticalAlignment="Center" FontSize="18" Width="auto"/>
+            </StackPanel>
+        </Grid>
 
-        <TextBlock HorizontalAlignment="Left" Grid.Row="1" Grid.Column="1" Text="Администрация: " Margin="11,48,0,264"/>
-        <TextBlock HorizontalAlignment="Left" Grid.Row="1" Grid.Column="1" Text="кВт" Margin="218,48,0,132"/>
-        <TextBox x:Name="energyRoom1" HorizontalAlignment="Left" Margin="112,40,0,0" Grid.Row="1" Grid.Column="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="100" TextChanged="Room_TextChanged" KeyDown="Text_KeyDown"/>
-        <TextBlock HorizontalAlignment="Left" Grid.Row="1" Grid.Column="1" Text="Комп. зал: " Margin="11,88,0,228"/>
-        <TextBlock HorizontalAlignment="Left" Grid.Row="1" Grid.Column="1" Text="кВт" Margin="218,88,0,94"/>
-        <TextBox x:Name="energyRoom2" HorizontalAlignment="Left" Margin="112,80,0,0" Grid.Row="1" Grid.Column="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="100" TextChanged="Room_TextChanged" KeyDown="Text_KeyDown"/>
-        <TextBlock HorizontalAlignment="Left" Grid.Row="1" Grid.Column="1" Text="Парикмахерская: " Margin="11,128,0,184"/>
-        <TextBlock HorizontalAlignment="Left" Grid.Row="1" Grid.Column="1" Text="кВт" Margin="218,128,0,184"/>
-        <TextBox x:Name="energyRoom3" HorizontalAlignment="Left" Margin="112,120,0,0" Grid.Row="1" Grid.Column="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="100" TextChanged="Room_TextChanged" KeyDown="Text_KeyDown"/>
+        <Grid Grid.Row="1" Grid.ColumnSpan="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250"/>
+                <ColumnDefinition Width="250"/>
+                <ColumnDefinition Width="250"/>
+            </Grid.ColumnDefinitions>
+            <Border BorderBrush="Black"
+                    Grid.Column="0"
+                    BorderThickness="0,1,1,1" 
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch">
+                <StackPanel VerticalAlignment="Stretch"
+                            HorizontalAlignment="Stretch">
+                    <TextBlock x:Name="tech" 
+                               HorizontalAlignment="Center" 
+                               Margin="0,5,0,20"
+                               Text="Техническое обслуживание"
+                               FontSize="16"/>
 
-        <TextBlock HorizontalAlignment="Left" Grid.Row="1" Grid.Column="1" Text="Кол-во: " Margin="11,168,0,144"/>
-        <TextBlock HorizontalAlignment="Left" Grid.Row="1" Grid.Column="1" Text="кВт" Margin="218,168,0,144"/>
-        <TextBox x:Name="energyCount" HorizontalAlignment="Left" Margin="112,160,0,0" Grid.Row="1" Grid.Column="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="100" IsReadOnly="True" TextChanged="energyCount_TextChanged" KeyDown="Text_KeyDown"/>
-        <TextBlock HorizontalAlignment="Left" Grid.Row="1" Grid.Column="1" Text="Цена: " Margin="11,208,0,28"/>
-        <TextBlock HorizontalAlignment="Left" Grid.Row="1" Grid.Column="1" Text="руб." Margin="218,208,0,28"/>
-        <TextBox x:Name="energyPrice" HorizontalAlignment="Left" Margin="112,200,0,0" Grid.Row="1" Grid.Column="1" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="100" KeyUp="energyPrice_KeyUp" KeyDown="Text_KeyDown"/>
-        <TextBlock HorizontalAlignment="Left" Grid.Row="1" Grid.Column="1" Text="Сумма: " Margin="10,248,0,68"/>
-        <TextBlock HorizontalAlignment="Left" Grid.Row="1" Grid.Column="1" Text="руб." Margin="217,248,0,68"/>
-        <TextBox x:Name="energySum" HorizontalAlignment="Left" Margin="112,240,0,0" Grid.Row="1" Grid.Column="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="100" IsReadOnly="True" TextChanged="Sum_TextChanged"/>
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Center">
+                        <TextBlock Text="Кол-во:"
+                                   VerticalAlignment="Center"/>
+                        <TextBox x:Name="techCount"
+                                 Margin="5,0,0,0"
+                                 TextWrapping="Wrap" 
+                                 Text="0" 
+                                 Width="100"
+                                 KeyUp="techCount_KeyUp" KeyDown="Text_KeyDown"
+                                 MaxLines="1"/>
+                        <TextBlock Text="месяц"
+                                   Margin="5 0 0 0"
+                                   VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Center"
+                                Margin="0 10 0 0">
+                        <TextBlock Text="Цена:"
+                                   VerticalAlignment="Center"/>
+                        <TextBox x:Name="techPrice"
+                                 Margin="5 0 0 0"
+                                 TextWrapping="Wrap"
+                                 Text="0"
+                                 Width="100"
+                                 KeyUp="techPrice_KeyUp" KeyDown="Text_KeyDown"
+                                 MaxLines="1"/>
+                        <TextBlock Text="руб." 
+                                   Margin="5 0 0 0"
+                                   VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Center"
+                                Margin="-7,10,0,0">
+                        <TextBlock Text="Сумма:"
+                                   VerticalAlignment="Center"/>
+                        <TextBox x:Name="techSum"
+                                 Margin="5 0 0 0"
+                                 TextWrapping="Wrap" 
+                                 Text=""
+                                 Width="100" IsReadOnly="True" 
+                                 TextChanged="Sum_TextChanged"/>
+                        <TextBlock Text="руб."
+                                   Margin="5 0 0 0"
+                                   VerticalAlignment="Center"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+            <Border BorderBrush="Black"
+                    Grid.Column="1"
+                    BorderThickness="0,1,1,1" 
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch">
+                <StackPanel VerticalAlignment="Stretch"
+                            HorizontalAlignment="Stretch">
+                    <TextBlock x:Name="energy" 
+                               HorizontalAlignment="Center"
+                               Margin="0,5,0,20"
+                               Text="Э/энергия"
+                               FontSize="16"/>
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Center">
+                        <TextBlock Text="Администрация:"
+                                   VerticalAlignment="Center"/>
+                        <TextBox x:Name="energyRoom1"
+                                 Margin="5 0 0 0"
+                                 TextWrapping="Wrap" 
+                                 Text=""
+                                 Width="100"
+                                 TextChanged="Room_TextChanged" KeyDown="Text_KeyDown"/>
+                        <TextBlock Text="кВт"
+                                   Margin="5,0,0,0"
+                                   VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Center"
+                                Margin="0 10 0 0">
+                        <TextBlock Text="Комп. зал:"
+                                   VerticalAlignment="Center"
+                                   Margin="31 0 0 0"/>
+                        <TextBox x:Name="energyRoom2" Margin="5,0,0,0"
+                                 TextWrapping="Wrap" 
+                                 Text=""
+                                 Width="100"
+                                 TextChanged="Room_TextChanged" KeyDown="Text_KeyDown"/>
+                        <TextBlock Text="кВт" Margin="5,0,0,0"
+                                   VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Center"
+                                Margin="0 10 0 0">
+                        <TextBlock Text="Парикмахерская:"
+                                   VerticalAlignment="Center"
+                                   Margin="-4 0 0 0"/>
+                        <TextBox x:Name="energyRoom3"
+                                 Margin="5,0,0,0"
+                                 TextWrapping="Wrap" 
+                                 Text="" 
+                                 Width="100" 
+                                 TextChanged="Room_TextChanged" KeyDown="Text_KeyDown"/>
+                        <TextBlock Text="кВт" 
+                                   Margin="5,0,0,0"
+                                   VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Center"
+                                Margin="0 10 0 0">
+                        <TextBlock Text="Швея:"
+                                   VerticalAlignment="Center"
+                                   Margin="55 0 0 0"/>
+                        <TextBox x:Name="energyRoom4"
+                                 Margin="5,0,0,0" 
+                                 TextWrapping="Wrap" 
+                                 Text="" 
+                                 Width="100" 
+                                 TextChanged="Room_TextChanged" KeyDown="Text_KeyDown"/>
+                        <TextBlock Text="кВт" 
+                                   Margin="5,0,0,0"
+                                   VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Center"
+                                Margin="0 10 0 0">
+                        <TextBlock Text="Кол-во:"
+                                   VerticalAlignment="Center"
+                                   Margin="48 0 0 0"/>
+                        <TextBox x:Name="energyCount"
+                                 Margin="5,0,0,0"
+                                 TextWrapping="Wrap" 
+                                 Text=""
+                                 Width="100" IsReadOnly="True"
+                                 TextChanged="energyCount_TextChanged" KeyDown="Text_KeyDown"/>
+                        <TextBlock Text="кВт" 
+                                   Margin="5,0,0,0"
+                                   VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Center"
+                                Margin="0 10 0 0">
+                        <TextBlock Text="Цена:"
+                                   VerticalAlignment="Center"
+                                   Margin="62 0 0 0"/>
+                        <TextBox x:Name="energyPrice"
+                                 Margin="5,0,0,0" 
+                                 TextWrapping="Wrap" 
+                                 Text="0"
+                                 Width="100" 
+                                 KeyUp="energyPrice_KeyUp" KeyDown="Text_KeyDown"/>
+                        <TextBlock Text="руб." 
+                                   Margin="5,0,0,0"
+                                   VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Center"
+                                Margin="0 10 0 20">
+                        <TextBlock Text="Сумма:"
+                                   VerticalAlignment="Center"
+                                   Margin="55 0 0 0"/>
+                        <TextBox x:Name="energySum"
+                                 Margin="5,0,0,0"
+                                 TextWrapping="Wrap" 
+                                 Text=""
+                                 Width="100" IsReadOnly="True" 
+                                 TextChanged="Sum_TextChanged"/>
+                        <TextBlock Text="руб." 
+                                   Margin="5,0,0,0"
+                                   VerticalAlignment="Center"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+            <Grid Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Border BorderBrush="Black"
+                        Grid.Row="0"
+                        BorderThickness="0 1 0 0" 
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch">
+                    <StackPanel VerticalAlignment="Stretch"
+                                HorizontalAlignment="Stretch">
+                        <TextBlock x:Name="heat"
+                                   HorizontalAlignment="Center" 
+                                   Margin="0,5,0,20"
+                                   Text="Отопление"
+                                   FontSize="16"/>
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Center">
+                            <TextBlock Text="Кол-во:"
+                                       VerticalAlignment="Center"/>
+                            <TextBox x:Name="heatCount"
+                                     Margin="5,0,0,0"
+                                     TextWrapping="Wrap" 
+                                     Text="0" 
+                                     Width="100" 
+                                     KeyUp="heatCount_KeyUp" KeyDown="Text_KeyDown"/>
+                            <TextBlock Text="Гкал" Margin="5,0,0,0"
+                                       VerticalAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Center"
+                                    Margin="0 10 0 0">
+                            <TextBlock Text="Цена:"
+                                       VerticalAlignment="Center"
+                                       Margin="10 0 0 0"/>
+                            <TextBox x:Name="heatPrice"
+                                     Margin="5,0,0,0"
+                                     TextWrapping="Wrap" Text="0" 
+                                     Width="100" 
+                                     KeyUp="heatPrice_KeyUp" KeyDown="Text_KeyDown"/>
+                            <TextBlock Text="руб." Margin="5,0,0,0"
+                                       VerticalAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Center"
+                                    Margin="0 10 0 0">
+                            <TextBlock Text="Сумма:"
+                                       VerticalAlignment="Center"/>
+                            <TextBox x:Name="heatSum"
+                                     Margin="5,0,0,0"
+                                     TextWrapping="Wrap" 
+                                     Text=""
+                                     Width="100" IsReadOnly="True" 
+                                     TextChanged="Sum_TextChanged"/>
+                            <TextBlock Text="руб." Margin="5,0,0,0"
+                                       VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+                <Border BorderBrush="Black"
+                        Grid.Row="1"
+                        BorderThickness="0,1,0,1" 
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch">
+                    <StackPanel VerticalAlignment="Stretch"
+                                HorizontalAlignment="Stretch">
+                        <TextBlock x:Name="water"
+                                   HorizontalAlignment="Center" 
+                                   Margin="0,5,0,20" Text="Водоснабжение"
+                                   FontSize="16"/>
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Center">
+                            <TextBlock Text="Кол-во:"
+                                       VerticalAlignment="Center"/>
+                            <TextBox x:Name="waterCount"
+                                     Margin="5,0,0,0"
+                                     TextWrapping="Wrap" 
+                                     Text="0" 
+                                     Width="100" 
+                                     KeyUp="waterCount_KeyUp" KeyDown="Text_KeyDown"/>
+                            <TextBlock Text="м" Margin="5,0,0,0"
+                                       VerticalAlignment="Center"/>
+                            <TextBlock Text="3" Margin="0 0 0 5"
+                                       VerticalAlignment="Center">
+                                <TextBlock.LayoutTransform>
+                                    <!-- Typography.Variants="Superscript" didn't work -->
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleX=".75" ScaleY=".75"/>
+                                        <TranslateTransform Y="-5"/>
+                                    </TransformGroup>
+                                </TextBlock.LayoutTransform>
+                            </TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Center"
+                                    Margin="0 10 0 0">
+                            <TextBlock Text="Цена:"
+                                       VerticalAlignment="Center"
+                                       Margin="18 0 0 0"/>
+                            <TextBox x:Name="waterPrice"
+                                     Margin="5,0,0,0"
+                                     TextWrapping="Wrap" Text="0" 
+                                     Width="100" 
+                                     KeyUp="waterPrice_KeyUp" KeyDown="Text_KeyDown"/>
+                            <TextBlock Text="руб." Margin="5,0,0,0"
+                                       VerticalAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Center"
+                                    Margin="0 10 0 0">
+                            <TextBlock Text="Сумма:"
+                                       VerticalAlignment="Center"
+                                       Margin="13 0 0 0"/>
+                            <TextBox x:Name="waterSum"
+                                     Margin="5,0,0,0"
+                                     TextWrapping="Wrap" 
+                                     Text=""
+                                     Width="100" IsReadOnly="True" 
+                                     TextChanged="Sum_TextChanged"/>
+                            <TextBlock Text="руб." Margin="5,0,0,0"
+                                       VerticalAlignment="Center"/>
+                        </StackPanel>
 
-        <Border BorderBrush="Black" BorderThickness="1,1,0,1" HorizontalAlignment="Left" Height="331" Grid.Row="1" Grid.Column="2" VerticalAlignment="Top" Width="250"/>
-        <TextBlock x:Name="heat" HorizontalAlignment="Center" Margin="0,5,0,0" Grid.Row="1" Grid.Column="2" Text="Отопление" VerticalAlignment="Top" FontSize="16"/>
-        <TextBlock HorizontalAlignment="Left" Grid.Row="1" Grid.Column="2" Text="Кол-во: " Margin="23,48,0,140"/>
-        <TextBlock HorizontalAlignment="Left" Grid.Row="1" Grid.Column="2" Text="Гкал" Margin="180,48,0,140"/>
-        <TextBox x:Name="heatCount" HorizontalAlignment="Left" Margin="74,40,0,0" Grid.Row="1" Grid.Column="2" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="100" KeyUp="heatCount_KeyUp" KeyDown="Text_KeyDown"/>
-        <TextBlock HorizontalAlignment="Left" Grid.Row="1" Grid.Column="2" Text="Цена: " Margin="23,88,0,112"/>
-        <TextBlock HorizontalAlignment="Left" Grid.Row="1" Grid.Column="2" Text="руб." Margin="180,88,0,112"/>
-        <TextBox x:Name="heatPrice" HorizontalAlignment="Left" Margin="74,80,0,0" Grid.Row="1" Grid.Column="2" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="100" KeyUp="heatPrice_KeyUp" KeyDown="Text_KeyDown"/>
-        <TextBlock HorizontalAlignment="Left" Grid.Row="1" Grid.Column="2" Text="Сумма: " Margin="23,128,0,84"/>
-        <TextBlock HorizontalAlignment="Left" Grid.Row="1" Grid.Column="2" Text="руб." Margin="180,128,0,84"/>
-        <TextBox x:Name="heatSum" HorizontalAlignment="Left" Margin="74,120,0,0" Grid.Row="1" Grid.Column="2" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="100" IsReadOnly="True" TextChanged="Sum_TextChanged"/>
-        <Button x:Name="addBtn" Content="Сохранить изменение" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Width="250" Height="40" FontSize="18" Click="addBtn_Click" Margin="0,2,0,9"/>
-        <Border BorderBrush="Black" Grid.Row="1" Grid.Column="2" BorderThickness="0,1,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Height="168" Width="250" Margin="0,163,0,0">
-            <Grid>
-                <TextBlock x:Name="water" HorizontalAlignment="Center" Margin="64,5,67,0" Text="Водоснабжение" VerticalAlignment="Top" FontSize="16" Width="119"/>
-                <TextBlock HorizontalAlignment="Left" Text="Кол-во: " Margin="23,45,0,86"/>
-                <TextBlock HorizontalAlignment="Left" Text="м3" Margin="180,45,0,86"/>
-                <TextBox x:Name="waterCount" HorizontalAlignment="Left" Margin="74,40,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="100" KeyUp="waterCount_KeyUp" KeyDown="Text_KeyDown"/>
-                <TextBlock HorizontalAlignment="Left" Text="Цена: " Margin="23,85,0,56"/>
-                <TextBlock HorizontalAlignment="Left" Text="руб." Margin="180,85,0,56"/>
-                <TextBox x:Name="waterPrice" HorizontalAlignment="Left" Margin="74,80,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="100" KeyUp="waterPrice_KeyUp" KeyDown="Text_KeyDown"/>
-                <TextBlock HorizontalAlignment="Left" Text="Сумма: " Margin="23,125,0,26"/>
-                <TextBlock HorizontalAlignment="Left" Text="руб." Margin="180,125,0,26"/>
-                <TextBox x:Name="waterSum" HorizontalAlignment="Left" Margin="74,120,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="100" IsReadOnly="True" TextChanged="Sum_TextChanged"/>
+                    </StackPanel>
+                </Border>
             </Grid>
-        </Border>
+        </Grid>
+
+        <Button x:Name="addBtn" 
+                Content="Сохранить изменения" 
+                Grid.Column="1"
+                Grid.Row="2" 
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Center" 
+                Width="250" Height="40" Margin="0 10"
+                FontSize="18" Click="addBtn_Click"/>
+
     </Grid>
+
 </Window>

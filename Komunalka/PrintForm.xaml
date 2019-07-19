@@ -21,7 +21,7 @@
             <RowDefinition Height="741*"/>
         </Grid.RowDefinitions>
 
-        <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,0,0,10" Grid.Row="1">
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,27,0,0" Grid.Row="1">
             <Grid x:Name="PrintGrid" HorizontalAlignment="Right">
                 <!--Блок шапки документа-->
                 <TextBlock HorizontalAlignment="Left" Margin="346,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="155" Width="273" FontSize="18"><Run FontWeight="Bold" FontSize="24" Text="Утверждено"/><LineBreak/><Run Text="Руководитель ПРООМИ"/><LineBreak/><Run Text="&quot;Бригантина Надежды&quot;"/><LineBreak/><Run/><LineBreak/><Run Text="__________      А.И. Избасаров"/><LineBreak/><Run Text="   подпись"/></TextBlock>
@@ -85,9 +85,10 @@
                         <TextBlock.ToolTip>
                             <ToolTip HasDropShadow="True">
                                 <StackPanel>
-                                    <TextBlock x:Name="countRoom1"></TextBlock>
-                                    <TextBlock x:Name="countRoom2"></TextBlock>
-                                    <TextBlock x:Name="countRoom3"></TextBlock>
+                                    <TextBlock x:Name="countRoom1"/>
+                                    <TextBlock x:Name="countRoom2"/>
+                                    <TextBlock x:Name="countRoom3"/>
+                                    <TextBlock x:Name="countRoom4"/>
                                 </StackPanel>
                             </ToolTip>
                         </TextBlock.ToolTip>
@@ -166,9 +167,10 @@
                         <TextBlock.ToolTip>
                             <ToolTip HasDropShadow="True">
                                 <StackPanel>
-                                    <TextBlock x:Name="energySumRoom1"></TextBlock>
-                                    <TextBlock x:Name="energySumRoom2"></TextBlock>
-                                    <TextBlock x:Name="energySumRoom3"></TextBlock>
+                                    <TextBlock x:Name="energySumRoom1"/>
+                                    <TextBlock x:Name="energySumRoom2"/>
+                                    <TextBlock x:Name="energySumRoom3"/>
+                                    <TextBlock x:Name="energySumRoom4"/>
                                 </StackPanel>
                             </ToolTip>
                         </TextBlock.ToolTip>
@@ -200,250 +202,268 @@
                 </Border>
 
                 <!--Таблица электроэнергии-->
-                <TextBlock HorizontalAlignment="Left" Margin="12,746,0,0" TextWrapping="Wrap" Text="Электроэнергия" VerticalAlignment="Top" Width="589" Height="30" FontSize="22"/>
+                <TextBlock HorizontalAlignment="Left" Margin="12,773,0,0" TextWrapping="Wrap" Text="Электроэнергия" VerticalAlignment="Top" Width="589" Height="30" FontSize="22"/>
 
                 <!--Столбец №-->
-                <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" Margin="12,781,0,0">
+                <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" Margin="12,808,0,0">
                     <TextBlock Margin="5,4,5,-1" Height="25" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="18"><Run Text="№"/></TextBlock>
                 </Border>
-                <Border BorderBrush="Black" BorderThickness="1,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" Margin="12,811,0,0">
+                <Border BorderBrush="Black" BorderThickness="1,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" Margin="12,838,0,0">
                     <TextBlock Margin="5,4,5,-1" Height="25" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="14"><Run Text="1"/></TextBlock>
                 </Border>
-                <Border BorderBrush="Black" BorderThickness="1,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" Margin="12,841,0,0">
+                <Border BorderBrush="Black" BorderThickness="1,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" Margin="12,868,0,0">
                     <TextBlock Margin="5,4,5,-1" Height="25" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="14"><Run Text="2"/></TextBlock>
                 </Border>
-                <Border BorderBrush="Black" BorderThickness="1,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" Margin="12,871,0,0">
+                <Border BorderBrush="Black" BorderThickness="1,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" Margin="12,898,0,0">
                     <TextBlock Margin="5,4,5,-1" Height="25" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="14"><Run Text="3"/></TextBlock>
+                </Border>
+                <Border BorderBrush="Black" BorderThickness="1,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" Margin="12,928,0,0">
+                    <TextBlock Margin="5,4,5,-1" Height="25" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="14" Text="4"/>
                 </Border>
 
                 <!--Столбец с Наименованием работ-->
-                <Border BorderBrush="Black" BorderThickness="0,1,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="260" Margin="41,781,0,0">
+                <Border BorderBrush="Black" BorderThickness="0,1,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="260" Margin="41,808,0,0">
                     <TextBlock Margin="6,4,9,-1" Height="25" FontSize="18" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="Комната"/></TextBlock>
                 </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="260" Margin="41,811,0,0">
+                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="260" Margin="41,838,0,0">
                     <TextBlock Margin="6,4,9,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="Администрация"/></TextBlock>
                 </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="260" Margin="41,841,0,0">
+                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="260" Margin="41,868,0,0">
                     <TextBlock Margin="6,4,9,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="Компьютерный зал"/></TextBlock>
                 </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="260" Margin="41,871,0,0">
+                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="260" Margin="41,898,0,0">
                     <TextBlock Margin="6,4,9,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="Парикмахерская"/></TextBlock>
+                </Border>
+                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="260" Margin="41,928,0,0">
+                    <TextBlock Margin="6,4,9,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center" Text="Швея"/>
                 </Border>
 
                 <!--Столбец с Кол-вом -->
-                <Border BorderBrush="Black" BorderThickness="0,1,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="80" Margin="301,781,0,0">
+                <Border BorderBrush="Black" BorderThickness="0,1,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="80" Margin="301,808,0,0">
                     <TextBlock Margin="10,4,7,-1" Height="25" FontSize="18" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="Кол-во"/></TextBlock>
                 </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="80" Margin="301,811,0,0">
+                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="80" Margin="301,838,0,0">
                     <TextBlock x:Name="adminCount" Margin="10,4,7,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
                 </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="80" Margin="301,841,0,0">
+                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="80" Margin="301,868,0,0">
                     <TextBlock x:Name="compCount" Margin="10,4,7,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
                 </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="80" Margin="301,871,0,0">
+                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="80" Margin="301,898,0,0">
                     <TextBlock x:Name="barbCount" Margin="10,4,7,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
+                </Border>
+                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="80" Margin="301,928,0,0">
+                    <TextBlock x:Name="seamstressCount" Margin="10,4,7,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
                 </Border>
 
                 <!--Столбец с Ед.-->
-                <Border BorderBrush="Black" BorderThickness="0,1,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="60" Margin="381,781,0,0">
+                <Border BorderBrush="Black" BorderThickness="0,1,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="60" Margin="381,808,0,0">
                     <TextBlock Margin="5,4,1,-1" Height="25" FontSize="18" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="Ед."/></TextBlock>
                 </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="60" Margin="381,811,0,0">
+                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="60" Margin="381,838,0,0">
                     <TextBlock Margin="5,4,1,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="кВт"/></TextBlock>
                 </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="60" Margin="381,841,0,0">
+                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="60" Margin="381,868,0,0">
                     <TextBlock Margin="5,4,1,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="кВт"/></TextBlock>
                 </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="60" Margin="381,871,0,0">
+                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="60" Margin="381,898,0,0">
+                    <TextBlock Margin="5,4,1,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="кВт"/></TextBlock>
+                </Border>
+                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="60" Margin="381,928,0,0">
                     <TextBlock Margin="5,4,1,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="кВт"/></TextBlock>
                 </Border>
 
                 <!--Столбец с Ценой-->
-                <Border BorderBrush="Black" BorderThickness="0,1,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="70" Margin="441,781,0,0">
+                <Border BorderBrush="Black" BorderThickness="0,1,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="70" Margin="441,808,0,0">
                     <TextBlock Margin="6,4,5,-1" Height="25" FontSize="18" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="Цена"/></TextBlock>
                 </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="70" Margin="441,811,0,0">
+                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="70" Margin="441,838,0,0">
                     <TextBlock x:Name="adminPrice" Margin="6,4,5,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
                 </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="70" Margin="441,841,0,0">
+                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="70" Margin="441,868,0,0">
                     <TextBlock x:Name="compPrice" Margin="6,4,5,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
                 </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="70" Margin="441,871,0,0">
+                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="70" Margin="441,898,0,0">
                     <TextBlock x:Name="barbPrice" Margin="6,4,5,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
+                </Border>
+                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="70" Margin="441,928,0,0">
+                    <TextBlock x:Name="seamstressPrice" Margin="6,4,5,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
                 </Border>
 
                 <!--Столбец с Суммой-->
-                <Border BorderBrush="Black" BorderThickness="0,1,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="90" Margin="511,781,0,0">
+                <Border BorderBrush="Black" BorderThickness="0,1,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="90" Margin="511,808,0,0">
                     <TextBlock Margin="10,4,13,-1" Height="25" FontSize="18" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="Сумма"/></TextBlock>
                 </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="90" Margin="511,811,0,0">
+                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="90" Margin="511,838,0,0">
                     <TextBlock x:Name="adminSum" Margin="10,4,13,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
                 </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="90" Margin="511,841,0,0">
+                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="90" Margin="511,868,0,0">
                     <TextBlock x:Name="compSum" Margin="10,4,13,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
                 </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="90" Margin="511,871,0,0">
+                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="90" Margin="511,898,0,0">
                     <TextBlock x:Name="barbSum" Margin="10,4,13,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
                 </Border>
+                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="90" Margin="511,928,0,0">
+                    <TextBlock x:Name="seamstressSum" Margin="10,4,13,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
+                </Border>
                 <!--Таблица: Техническое обслуживание-->
-                <TextBlock HorizontalAlignment="Left" Margin="12,585,0,0" TextWrapping="Wrap" Text="Техническое обслуживание" VerticalAlignment="Top" Width="589" Height="30" FontSize="22"/>
+                <TextBlock HorizontalAlignment="Left" Margin="12,612,0,0" TextWrapping="Wrap" Text="Техническое обслуживание" VerticalAlignment="Top" Width="589" Height="30" FontSize="22"/>
                 <!--Столбец с №-->
-                <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" Margin="12,620,0,0">
+                <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" Margin="12,647,0,0">
                     <TextBlock Margin="5,4,5,-1" Height="25" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="18"><Run Text="№"/></TextBlock>
                 </Border>
-                <Border BorderBrush="Black" BorderThickness="1,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" Margin="12,650,0,0">
+                <Border BorderBrush="Black" BorderThickness="1,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" Margin="12,677,0,0">
                     <TextBlock Margin="5,4,5,-1" Height="25" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="14"><Run Text="1"/></TextBlock>
                 </Border>
-                <Border BorderBrush="Black" BorderThickness="1,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" Margin="12,680,0,0">
+                <Border BorderBrush="Black" BorderThickness="1,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" Margin="12,707,0,0">
                     <TextBlock Margin="5,4,5,-1" Height="25" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="14"><Run Text="2"/></TextBlock>
                 </Border>
-                <Border BorderBrush="Black" BorderThickness="1,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" Margin="12,710,0,0">
+                <Border BorderBrush="Black" BorderThickness="1,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" Margin="12,737,0,0">
                     <TextBlock Margin="5,4,5,-1" Height="25" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="14"><Run Text="3"/></TextBlock>
                 </Border>
                 <!--Столбец с помещением-->
-                <Border BorderBrush="Black" BorderThickness="0,1,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="260" Margin="41,620,0,0">
+                <Border BorderBrush="Black" BorderThickness="0,1,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="260" Margin="41,647,0,0">
                     <TextBlock Margin="6,4,9,-1" Height="25" FontSize="18" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="Комната"/></TextBlock>
                 </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="260" Margin="41,650,0,0">
+                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="260" Margin="41,677,0,0">
                     <TextBlock Margin="6,4,9,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="Администрация"/></TextBlock>
                 </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="260" Margin="41,680,0,0">
+                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="260" Margin="41,707,0,0">
                     <TextBlock Margin="6,4,9,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="Компьютерный зал"/></TextBlock>
                 </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="260" Margin="41,710,0,0">
+                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="260" Margin="41,737,0,0">
                     <TextBlock Margin="6,4,9,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="Парикмахерская"/></TextBlock>
                 </Border>
                 <!--Столбец с Кол-вом-->
-                <Border BorderBrush="Black" BorderThickness="0,1,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="80" Margin="301,620,0,0">
+                <Border BorderBrush="Black" BorderThickness="0,1,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="80" Margin="301,647,0,0">
                     <TextBlock Margin="10,4,7,-1" Height="25" FontSize="18" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="Кол-во"/></TextBlock>
                 </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="80" Margin="301,650,0,0">
+                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="80" Margin="301,677,0,0">
                     <TextBlock x:Name="adminTechCount" Margin="10,4,7,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
                 </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="80" Margin="301,680,0,0">
+                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="80" Margin="301,707,0,0">
                     <TextBlock x:Name="compTechCount" Margin="10,4,7,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
                 </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="80" Margin="301,710,0,0">
+                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="80" Margin="301,737,0,0">
                     <TextBlock x:Name="barbTechCount" Margin="10,4,7,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
                 </Border>
                 <!--Столбец с Ед.-->
-                <Border BorderBrush="Black" BorderThickness="0,1,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="60" Margin="381,620,0,0">
+                <Border BorderBrush="Black" BorderThickness="0,1,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="60" Margin="381,647,0,0">
                     <TextBlock Margin="5,4,1,-1" Height="25" FontSize="18" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="Ед."/></TextBlock>
                 </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="60" Margin="381,650,0,0">
+                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="60" Margin="381,677,0,0">
                     <TextBlock Margin="5,4,1,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="месяц"/></TextBlock>
                 </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="60" Margin="381,680,0,0">
+                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="60" Margin="381,707,0,0">
                     <TextBlock Margin="5,4,1,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="месяц"/></TextBlock>
                 </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="60" Margin="381,710,0,0">
+                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="60" Margin="381,737,0,0">
                     <TextBlock Margin="5,4,1,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="месяц"/></TextBlock>
                 </Border>
                 <!--Столбец с Ценой-->
-                <Border BorderBrush="Black" BorderThickness="0,1,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="70" Margin="441,620,0,0">
+                <Border BorderBrush="Black" BorderThickness="0,1,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="70" Margin="441,647,0,0">
                     <TextBlock Margin="6,4,5,-1" Height="25" FontSize="18" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="Цена"/></TextBlock>
                 </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="70" Margin="441,650,0,0">
+                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="70" Margin="441,677,0,0">
                     <TextBlock x:Name="adminTechPrice" Margin="6,4,5,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
                 </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="70" Margin="441,680,0,0">
+                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="70" Margin="441,707,0,0">
                     <TextBlock x:Name="compTechPrice" Margin="6,4,5,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
                 </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="70" Margin="441,710,0,0">
+                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="70" Margin="441,737,0,0">
                     <TextBlock x:Name="barbTechPrice" Margin="6,4,5,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
                 </Border>
                 <!--Столбец с Суммой-->
-                <Border BorderBrush="Black" BorderThickness="0,1,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="90" Margin="511,620,0,0">
+                <Border BorderBrush="Black" BorderThickness="0,1,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="90" Margin="511,647,0,0">
                     <TextBlock Margin="10,4,13,-1" Height="25" FontSize="18" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="Сумма"/></TextBlock>
                 </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="90" Margin="511,650,0,0">
+                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="90" Margin="511,677,0,0">
                     <TextBlock x:Name="adminTechSum" Margin="10,4,13,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
                 </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="90" Margin="511,680,0,0">
+                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="90" Margin="511,707,0,0">
                     <TextBlock x:Name="compTechSum" Margin="10,4,13,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
                 </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="90" Margin="511,710,0,0">
+                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="90" Margin="511,737,0,0">
                     <TextBlock x:Name="barbTechSum" Margin="10,4,13,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
                 </Border>
 
                 <!--Таблица: Отопление-->
-                <TextBlock HorizontalAlignment="Left" Margin="12,906,0,0" TextWrapping="Wrap" Text="Отопление" VerticalAlignment="Top" Width="589" Height="30" FontSize="22"/>
+                <TextBlock HorizontalAlignment="Left" Margin="12,963,0,0" TextWrapping="Wrap" Text="Отопление" VerticalAlignment="Top" Width="589" Height="30" FontSize="22"/>
                 <!--Столбец с №-->
-                <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" Margin="12,941,0,0">
+                <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" Margin="12,996,0,0">
                     <TextBlock Margin="5,4,5,-1" Height="25" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="18"><Run Text="№"/></TextBlock>
                 </Border>
-                <Border BorderBrush="Black" BorderThickness="1,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" Margin="12,971,0,0">
+                <Border BorderBrush="Black" BorderThickness="1,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" Margin="12,1026,0,0">
                     <TextBlock Margin="5,4,5,-1" Height="25" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="14"><Run Text="1"/></TextBlock>
                 </Border>
-                <Border BorderBrush="Black" BorderThickness="1,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" Margin="12,1001,0,0">
+                <Border BorderBrush="Black" BorderThickness="1,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" Margin="12,1056,0,0">
                     <TextBlock Margin="5,4,5,-1" Height="25" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="14"><Run Text="2"/></TextBlock>
                 </Border>
-                <Border BorderBrush="Black" BorderThickness="1,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" Margin="12,1031,0,0">
+                <Border BorderBrush="Black" BorderThickness="1,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" Margin="12,1086,0,0">
                     <TextBlock Margin="5,4,5,-1" Height="25" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="14"><Run Text="3"/></TextBlock>
                 </Border>
                 <!--Столбец с помещением-->
-                <Border BorderBrush="Black" BorderThickness="0,1,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="260" Margin="41,941,0,0">
+                <Border BorderBrush="Black" BorderThickness="0,1,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="260" Margin="41,996,0,0">
                     <TextBlock Margin="6,4,9,-1" Height="25" FontSize="18" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="Комната"/></TextBlock>
                 </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="260" Margin="41,971,0,0">
+                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="260" Margin="41,1026,0,0">
                     <TextBlock Margin="6,4,9,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="Администрация"/></TextBlock>
                 </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="260" Margin="41,1001,0,0">
+                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="260" Margin="41,1056,0,0">
                     <TextBlock Margin="6,4,9,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="Компьютерный зал"/></TextBlock>
                 </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="260" Margin="41,1031,0,0">
+                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="260" Margin="41,1086,0,0">
                     <TextBlock Margin="6,4,9,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="Парикмахерская"/></TextBlock>
                 </Border>
                 <!--Столбец с Кол-вом-->
-                <Border BorderBrush="Black" BorderThickness="0,1,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="80" Margin="301,941,0,0">
+                <Border BorderBrush="Black" BorderThickness="0,1,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="80" Margin="301,996,0,0">
                     <TextBlock Margin="10,4,7,-1" Height="25" FontSize="18" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="Кол-во"/></TextBlock>
                 </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="80" Margin="301,971,0,0">
+                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="80" Margin="301,1026,0,0">
                     <TextBlock x:Name="adminHeatCount" Margin="10,4,7,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
                 </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="80" Margin="301,1001,0,0">
+                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="80" Margin="301,1056,0,0">
                     <TextBlock x:Name="compHeatCount" Margin="10,4,7,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
                 </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="80" Margin="301,1031,0,0">
+                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="80" Margin="301,1086,0,0">
                     <TextBlock x:Name="barbHeatCount" Margin="10,4,7,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
                 </Border>
                 <!--Столбец с Ед.-->
-                <Border BorderBrush="Black" BorderThickness="0,1,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="60" Margin="381,941,0,0">
+                <Border BorderBrush="Black" BorderThickness="0,1,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="60" Margin="381,996,0,0">
                     <TextBlock Margin="5,4,1,-1" Height="25" FontSize="18" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="Ед."/></TextBlock>
                 </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="60" Margin="381,971,0,0">
+                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="60" Margin="381,1026,0,0">
                     <TextBlock Margin="5,4,1,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="месяц"/></TextBlock>
                 </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="60" Margin="381,1001,0,0">
+                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="60" Margin="381,1056,0,0">
                     <TextBlock Margin="5,4,1,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="месяц"/></TextBlock>
                 </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="60" Margin="381,1031,0,0">
+                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="60" Margin="381,1086,0,0">
                     <TextBlock Margin="5,4,1,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="месяц"/></TextBlock>
                 </Border>
                 <!--Столбец с Ценой-->
-                <Border BorderBrush="Black" BorderThickness="0,1,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="70" Margin="441,941,0,0">
+                <Border BorderBrush="Black" BorderThickness="0,1,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="70" Margin="441,996,0,0">
                     <TextBlock Margin="6,4,5,-1" Height="25" FontSize="18" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="Цена"/></TextBlock>
                 </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="70" Margin="441,971,0,0">
+                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="70" Margin="441,1026,0,0">
                     <TextBlock x:Name="adminHeatPrice" Margin="6,4,5,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
                 </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="70" Margin="441,1001,0,0">
+                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="70" Margin="441,1056,0,0">
                     <TextBlock x:Name="compHeatPrice" Margin="6,4,5,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
                 </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="70" Margin="441,1031,0,0">
+                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="70" Margin="441,1086,0,0">
                     <TextBlock x:Name="barbHeatPrice" Margin="6,4,5,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
                 </Border>
                 <!--Столбец с Суммой-->
-                <Border BorderBrush="Black" BorderThickness="0,1,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="90" Margin="511,941,0,0">
+                <Border BorderBrush="Black" BorderThickness="0,1,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="90" Margin="511,996,0,0">
                     <TextBlock Margin="10,4,13,-1" Height="25" FontSize="18" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="Сумма"/></TextBlock>
                 </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="90" Margin="511,971,0,0">
+                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="90" Margin="511,1026,0,0">
                     <TextBlock x:Name="adminHeatSum" Margin="10,4,13,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
                 </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="90" Margin="511,1001,0,0">
+                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="90" Margin="511,1056,0,0">
                     <TextBlock x:Name="compHeatSum" Margin="10,4,13,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
                 </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="90" Margin="511,1031,0,0">
+                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="90" Margin="511,1086,0,0">
                     <TextBlock x:Name="barbHeatSum" Margin="10,4,13,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
                 </Border>
 
@@ -462,6 +482,9 @@
                 <Border BorderBrush="Black" BorderThickness="1,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" Margin="12,547,0,0">
                     <TextBlock Margin="5,4,5,-1" Height="25" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="14" FontWeight="Bold"><Run Text="3"/></TextBlock>
                 </Border>
+                <Border BorderBrush="Black" BorderThickness="1,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" Margin="12,577,0,0">
+                    <TextBlock Margin="5,4,5,-1" Height="25" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="14" FontWeight="Bold"><Run Text="4"/></TextBlock>
+                </Border>
                 <!--Столбец с помещением-->
                 <Border BorderBrush="Black" BorderThickness="0,1,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="157" Margin="41,457,0,0">
                     <TextBlock Margin="6,4,9,-1" Height="25" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Center" FontWeight="Bold"><Run Text="Комната"/></TextBlock>
@@ -474,6 +497,9 @@
                 </Border>
                 <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="157" Margin="41,547,0,0">
                     <TextBlock Margin="6,4,9,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center" FontWeight="Bold"><Run Text="Парикмахерская"/></TextBlock>
+                </Border>
+                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="157" Margin="41,577,0,0">
+                    <TextBlock Margin="6,4,9,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center" FontWeight="Bold"><Run Text="Швея"/><LineBreak/><Run/><LineBreak/><Run Text="\"/></TextBlock>
                 </Border>
                 <!--Столбец с Тех. обслуживание-->
                 <Border BorderBrush="Black" BorderThickness="0,1,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="91" Margin="198,457,0,0">
@@ -488,6 +514,9 @@
                 <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="91" Margin="198,547,0,0">
                     <TextBlock x:Name="barbTechTotalSum" Margin="10,4,7,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
                 </Border>
+                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="91" Margin="198,577,0,0">
+                    <TextBlock x:Name="seamstressTechTotalSum" Margin="10,4,7,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="0"/></TextBlock>
+                </Border>
                 <!--Столбец с Э/энергия-->
                 <Border BorderBrush="Black" BorderThickness="0,1,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="86" Margin="289,457,0,0">
                     <TextBlock Margin="5,4,1,-1" Height="25" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="Э/энергия"/></TextBlock>
@@ -500,6 +529,9 @@
                 </Border>
                 <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="86" Margin="289,547,0,0">
                     <TextBlock x:Name="barbEnergyTotalSum" Margin="5,4,1,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
+                </Border>
+                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="86" Margin="289,577,0,0">
+                    <TextBlock x:Name="seamstressEnergyTotalSum" Margin="5,4,1,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
                 </Border>
                 <!--Столбец с Отопление-->
                 <Border BorderBrush="Black" BorderThickness="0,1,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="90" Margin="375,457,0,0">
@@ -514,6 +546,9 @@
                 <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="90" Margin="375,547,0,0">
                     <TextBlock x:Name="barbHeatTotalSum" Margin="6,4,5,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
                 </Border>
+                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="90" Margin="375,577,0,0">
+                    <TextBlock x:Name="seamstressHeatTotalSum" Margin="6,4,5,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="0"/></TextBlock>
+                </Border>
                 <!--Столбец с Вода-->
                 <Border BorderBrush="Black" BorderThickness="0,1,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="60" Margin="465,457,0,0">
                     <TextBlock Margin="5,4,1,-1" Height="25" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="Вода"/></TextBlock>
@@ -526,6 +561,9 @@
                 </Border>
                 <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="60" Margin="465,547,0,0">
                     <TextBlock x:Name="barbWaterTotalSum" Margin="5,4,1,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
+                </Border>
+                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="60" Margin="465,577,0,0">
+                    <TextBlock x:Name="seamstressWaterTotalSum" Margin="5,4,1,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="0"/></TextBlock>
                 </Border>
 
 
@@ -541,6 +579,9 @@
                 </Border>
                 <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="76" Margin="525,547,0,0">
                     <TextBlock x:Name="barbTotalSum" Margin="10,4,13,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
+                </Border>
+                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="76" Margin="525,577,0,0">
+                    <TextBlock x:Name="seamstressTotalSum" Margin="10,4,13,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
                 </Border>
             </Grid>
         </ScrollViewer>

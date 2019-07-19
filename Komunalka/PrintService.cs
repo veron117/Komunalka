@@ -62,7 +62,7 @@ namespace Komunalka
             object matchDiacritics = false;
             object matchAlefHamza = false;
             object matchControl = false;
-            object read_only = false;
+            object readOnly = false;
             object visible = true;
             object replace = 2;
             object wrap = 1;
