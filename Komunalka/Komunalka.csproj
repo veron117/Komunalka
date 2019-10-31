@@ -103,6 +103,7 @@
     <Compile Include="EditForm.xaml.cs">
       <DependentUpon>EditForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PrintHelper.cs" />
     <Compile Include="PrintService.cs" />
     <Compile Include="xml_data.cs" />
     <Page Include="addform.xaml">

@@ -191,31 +191,8 @@ namespace Komunalka
         private void PrintBtn_Click(object sender, RoutedEventArgs e)
         {
             var printDialog = new PrintDialog();
-            if (printDialog.ShowDialog() == true)
-            {
-                // Скрыть Grid
-                MainGrid.Visibility = Visibility.Hidden;
-
-                // Увеличить размер в 5 раз
-                PrintGrid.LayoutTransform = new ScaleTransform(1, 1);
-
-                // Определить поля
-                var pageMargin = 50;
-
-                // Получить размер страницы
-                var pageSize = new Size(printDialog.PrintableAreaWidth - pageMargin * 2,
-                    printDialog.PrintableAreaHeight - 15);
-
-                // Инициировать установку размера элемента
-                PrintGrid.Measure(pageSize);
-                PrintGrid.Arrange(new Rect(pageMargin, pageMargin - 15, pageSize.Width, pageSize.Height));
-
-                // Напечатать элемент
-                printDialog.PrintVisual(PrintGrid, "Печать платёжки");
-
-                // Удалить трансформацию и снова сделать элемент видимым
-                Close();
-            }
+            var fixDoc = PrintHelper.GetFixedDocument(PrintGrid, printDialog);
+            PrintHelper.ShowPrintPreview(fixDoc);
         }
 
         private void PrintMail_OnClick(object sender, RoutedEventArgs e)
@@ -233,7 +210,6 @@ namespace Komunalka
                     {
                         if (el.Attribute("month")?.Value == arr[1] && el.Attribute("year")?.Value == arr[2])
                         {
-                            var old = new XmlData();
                             var oldData = XmlData.OldData(el.Attribute("id")?.Value);
                             var oldDate = oldData.Item7 != "" ? oldData.Item7.Split(':') : new []{ "1", "январь", arr[2] };
                             foreach (var elem in el.Elements())
