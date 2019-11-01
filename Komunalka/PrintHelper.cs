@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Markup;
@@ -20,11 +15,13 @@ namespace Komunalka
             var pageSize = new Size(printDialog.PrintableAreaWidth, printDialog.PrintableAreaHeight);
             var visibleSize = new Size(capabilities.PageImageableArea.ExtentWidth, capabilities.PageImageableArea.ExtentHeight);
             var fixedDoc = new FixedDocument();
-            //If the toPrint visual is not displayed on screen we neeed to measure and arrange it  
-            toPrint.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
-            toPrint.Arrange(new Rect(new Point(0, 0), toPrint.DesiredSize));
             //  
             var size = toPrint.DesiredSize;
+            //size.Height -= 50; 
+            //If the toPrint visual is not displayed on screen we neeed to measure and arrange it  
+            toPrint.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
+            toPrint.Arrange(new Rect(new Point(0, 0), size));
+            toPrint.UpdateLayout();
             //Will assume for simplicity the control fits horizontally on the page  
             double yOffset = 0;
             while (yOffset < size.Height)

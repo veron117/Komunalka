@@ -1,9 +1,8 @@
 ﻿<Window x:Class="Komunalka.PrintForm"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Komunalka"
         mc:Ignorable="d"
         Loaded="Window_Loaded"
         Title="" Height="800" Width="640"
@@ -21,570 +20,6 @@
             <RowDefinition Height="741*"/>
         </Grid.RowDefinitions>
 
-        <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,27,0,0" Grid.Row="1">
-            <Grid x:Name="PrintGrid" HorizontalAlignment="Right">
-                <!--Блок шапки документа-->
-                <TextBlock HorizontalAlignment="Left" Margin="346,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="155" Width="273" FontSize="18"><Run FontWeight="Bold" FontSize="24" Text="Утверждено"/><LineBreak/><Run Text="Руководитель ПРООМИ"/><LineBreak/><Run Text="&quot;Бригантина Надежды&quot;"/><LineBreak/><Run/><LineBreak/><Run Text="__________      А.И. Избасаров"/><LineBreak/><Run Text="   подпись"/></TextBlock>
-                <TextBlock x:Name="info_title" HorizontalAlignment="Left" Margin="12,187,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="22" Width="589" Height="33"/>
-                <TextBlock HorizontalAlignment="Left" Margin="9,61,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="71" Width="280" FontSize="18"><Run Text="Исходящее № ____________"/><LineBreak/><Run/><LineBreak/><Run Text="&quot;___&quot;__________ 20__ г."/></TextBlock>
-
-                <!--Разметка первой таблицы-->
-                <!-- Столбец с № -->
-                <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" Margin="12,231,0,0">
-                    <TextBlock Margin="5,4,5,-1" Height="25" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="18"><Run Text="№"/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="1,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" Margin="12,261,0,0">
-                    <TextBlock Margin="5,4,5,-1" Height="25" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="14"><Run Text="1"/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="1,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" Margin="12,291,0,0">
-                    <TextBlock Margin="5,4,5,-1" Height="25" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="14"><Run Text="2"/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="1,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" Margin="12,321,0,0">
-                    <TextBlock Margin="5,4,5,-1" Height="25" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="14"><Run Text="3"/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="1,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" Margin="12,351,0,0">
-                    <TextBlock Margin="5,4,5,-1" Height="25" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="14" Text="4"/>
-                </Border>
-
-                <!--Столбец с Наименованием работ-->
-                <Border BorderBrush="Black" BorderThickness="0,1,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="260" Margin="41,231,0,0">
-                    <TextBlock Margin="6,4,9,-1" Height="25" FontSize="18" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="Наименование работ, услуг"/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="260" Margin="41,261,0,0">
-                    <TextBlock x:Name="techName" Margin="6,4,9,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="260" Margin="41,291,0,0">
-                    <TextBlock x:Name="energyName" Margin="6,4,9,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="260" Margin="41,321,0,0">
-                    <TextBlock x:Name="heatName" Margin="6,4,9,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="260" Margin="41,351,0,0">
-                    <TextBlock x:Name="waterName" Margin="6,4,9,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
-                </Border>
-
-                <!--Столбец с Кол-вом -->
-                <Border BorderBrush="Black" BorderThickness="0,1,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="80" Margin="301,231,0,0">
-                    <TextBlock Margin="10,4,7,-1" Height="25" FontSize="18" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="Кол-во"/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="80" Margin="301,261,0,0">
-                    <TextBlock x:Name="techCount" Margin="10,4,7,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center" Cursor="Hand"><Run Text=""/>
-                        <TextBlock.ToolTip>
-                            <ToolTip HasDropShadow="True">
-                                <StackPanel>
-                                    <TextBlock>Администрация: 11,6 м2</TextBlock>
-                                    <TextBlock>Компьютерный зал: 17,8 м2</TextBlock>
-                                    <TextBlock>Парикмахерская: 16,7 м2</TextBlock>
-                                </StackPanel>
-                            </ToolTip>
-                        </TextBlock.ToolTip>
-            </TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="80" Margin="301,291,0,0">
-                    <TextBlock x:Name="energyCount" Margin="10,4,7,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center" Cursor="Hand"><Run Text=""/>
-                        <TextBlock.ToolTip>
-                            <ToolTip HasDropShadow="True">
-                                <StackPanel>
-                                    <TextBlock x:Name="countRoom1"/>
-                                    <TextBlock x:Name="countRoom2"/>
-                                    <TextBlock x:Name="countRoom3"/>
-                                    <TextBlock x:Name="countRoom4"/>
-                                </StackPanel>
-                            </ToolTip>
-                        </TextBlock.ToolTip>
-            </TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="80" Margin="301,321,0,0">
-                    <TextBlock x:Name="heatCount" Margin="10,4,7,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center" Cursor="Hand"><Run Text=""/>
-                        <TextBlock.ToolTip>
-                            <ToolTip HasDropShadow="True">
-                                <StackPanel>
-                                    <TextBlock>Комната 1: 11,6 м2</TextBlock>
-                                    <TextBlock>Комната 2: 17,8 м2</TextBlock>
-                                    <TextBlock>Комната 3: 16,7 м2</TextBlock>
-                                </StackPanel>
-                            </ToolTip>
-                        </TextBlock.ToolTip>
-            </TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="80" Margin="301,351,0,0">
-                    <TextBlock x:Name="waterCount" Margin="10,4,7,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
-                </Border>
-
-                <!--Столбец с Ед.-->
-                <Border BorderBrush="Black" BorderThickness="0,1,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="60" Margin="381,231,0,0">
-                    <TextBlock Margin="5,4,1,-1" Height="25" FontSize="18" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="Ед."/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="60" Margin="381,261,0,0">
-                    <TextBlock x:Name="techUnit" Margin="5,4,1,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="60" Margin="381,291,0,0">
-                    <TextBlock x:Name="energyUnit" Margin="5,4,1,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="60" Margin="381,321,0,0">
-                    <TextBlock x:Name="heatUnit" Margin="5,4,1,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="60" Margin="381,351,0,0">
-                    <TextBlock x:Name="waterUnit" Margin="5,4,1,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
-                </Border>
-
-                <!--Столбец с Ценой-->
-                <Border BorderBrush="Black" BorderThickness="0,1,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="70" Margin="441,231,0,0">
-                    <TextBlock Margin="6,4,5,-1" Height="25" FontSize="18" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="Цена"/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="70" Margin="441,261,0,0">
-                    <TextBlock x:Name="techPrice" Margin="6,4,5,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="70" Margin="441,291,0,0">
-                    <TextBlock x:Name="energyPrice" Margin="6,4,5,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="70" Margin="441,321,0,0">
-                    <TextBlock x:Name="heatPrice" Margin="6,4,5,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="70" Margin="441,351,0,0">
-                    <TextBlock x:Name="waterPrice" Margin="6,4,5,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
-                </Border>
-
-                <!--Столбец с Суммой-->
-                <Border BorderBrush="Black" BorderThickness="0,1,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="90" Margin="511,231,0,0">
-                    <TextBlock Margin="10,4,13,-1" Height="25" FontSize="18" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="Сумма"/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="90" Margin="511,261,0,0">
-                    <TextBlock x:Name="techSum" Margin="10,4,13,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center" Cursor="Hand"><Run Text=""/>
-                        <TextBlock.ToolTip>
-                            <ToolTip HasDropShadow="True">
-                                <StackPanel>
-                                    <TextBlock x:Name="techSumRoom1"></TextBlock>
-                                    <TextBlock x:Name="techSumRoom2"></TextBlock>
-                                    <TextBlock x:Name="techSumRoom3"></TextBlock>
-                                </StackPanel>
-                            </ToolTip>
-                        </TextBlock.ToolTip>
-            </TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="90" Margin="511,291,0,0">
-                    <TextBlock x:Name="energySum" Margin="10,4,13,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center" Cursor="Hand"><Run Text=""/>
-                        <TextBlock.ToolTip>
-                            <ToolTip HasDropShadow="True">
-                                <StackPanel>
-                                    <TextBlock x:Name="energySumRoom1"/>
-                                    <TextBlock x:Name="energySumRoom2"/>
-                                    <TextBlock x:Name="energySumRoom3"/>
-                                    <TextBlock x:Name="energySumRoom4"/>
-                                </StackPanel>
-                            </ToolTip>
-                        </TextBlock.ToolTip>
-            </TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="90" Margin="511,321,0,0">
-                    <TextBlock x:Name="heatSum" Margin="10,4,13,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center" Cursor="Hand"><Run Text=""/>
-                        <TextBlock.ToolTip>
-                            <ToolTip HasDropShadow="True">
-                                <StackPanel>
-                                    <TextBlock x:Name="heatSumRoom1"></TextBlock>
-                                    <TextBlock x:Name="heatSumRoom2"></TextBlock>
-                                    <TextBlock x:Name="heatSumRoom3"></TextBlock>
-                                </StackPanel>
-                            </ToolTip>
-                        </TextBlock.ToolTip>
-            </TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="90" Margin="511,351,0,0">
-                    <TextBlock x:Name="waterSum" Margin="10,4,13,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
-                </Border>
-
-                <!--Строка "Итого"-->
-                <Border BorderBrush="Black" BorderThickness="1,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="289" Margin="12,381,0,0">
-                    <TextBlock Margin="6,4,9,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="Итого:" FontSize="18" FontWeight="Bold"/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="300" Margin="301,381,0,0">
-                    <TextBlock x:Name="TotalSum" Margin="6,4,9,-1" Height="25" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold" Foreground="#FFFF0B0B"><Run Text=""/></TextBlock>
-                </Border>
-
-                <!--Таблица электроэнергии-->
-                <TextBlock HorizontalAlignment="Left" Margin="12,773,0,0" TextWrapping="Wrap" Text="Электроэнергия" VerticalAlignment="Top" Width="589" Height="30" FontSize="22"/>
-
-                <!--Столбец №-->
-                <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" Margin="12,808,0,0">
-                    <TextBlock Margin="5,4,5,-1" Height="25" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="18"><Run Text="№"/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="1,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" Margin="12,838,0,0">
-                    <TextBlock Margin="5,4,5,-1" Height="25" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="14"><Run Text="1"/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="1,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" Margin="12,868,0,0">
-                    <TextBlock Margin="5,4,5,-1" Height="25" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="14"><Run Text="2"/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="1,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" Margin="12,898,0,0">
-                    <TextBlock Margin="5,4,5,-1" Height="25" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="14"><Run Text="3"/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="1,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" Margin="12,928,0,0">
-                    <TextBlock Margin="5,4,5,-1" Height="25" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="14" Text="4"/>
-                </Border>
-
-                <!--Столбец с Наименованием работ-->
-                <Border BorderBrush="Black" BorderThickness="0,1,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="260" Margin="41,808,0,0">
-                    <TextBlock Margin="6,4,9,-1" Height="25" FontSize="18" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="Комната"/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="260" Margin="41,838,0,0">
-                    <TextBlock Margin="6,4,9,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="Администрация"/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="260" Margin="41,868,0,0">
-                    <TextBlock Margin="6,4,9,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="Компьютерный зал"/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="260" Margin="41,898,0,0">
-                    <TextBlock Margin="6,4,9,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="Парикмахерская"/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="260" Margin="41,928,0,0">
-                    <TextBlock Margin="6,4,9,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center" Text="Швея"/>
-                </Border>
-
-                <!--Столбец с Кол-вом -->
-                <Border BorderBrush="Black" BorderThickness="0,1,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="80" Margin="301,808,0,0">
-                    <TextBlock Margin="10,4,7,-1" Height="25" FontSize="18" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="Кол-во"/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="80" Margin="301,838,0,0">
-                    <TextBlock x:Name="adminCount" Margin="10,4,7,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="80" Margin="301,868,0,0">
-                    <TextBlock x:Name="compCount" Margin="10,4,7,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="80" Margin="301,898,0,0">
-                    <TextBlock x:Name="barbCount" Margin="10,4,7,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="80" Margin="301,928,0,0">
-                    <TextBlock x:Name="seamstressCount" Margin="10,4,7,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
-                </Border>
-
-                <!--Столбец с Ед.-->
-                <Border BorderBrush="Black" BorderThickness="0,1,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="60" Margin="381,808,0,0">
-                    <TextBlock Margin="5,4,1,-1" Height="25" FontSize="18" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="Ед."/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="60" Margin="381,838,0,0">
-                    <TextBlock Margin="5,4,1,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="кВт"/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="60" Margin="381,868,0,0">
-                    <TextBlock Margin="5,4,1,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="кВт"/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="60" Margin="381,898,0,0">
-                    <TextBlock Margin="5,4,1,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="кВт"/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="60" Margin="381,928,0,0">
-                    <TextBlock Margin="5,4,1,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="кВт"/></TextBlock>
-                </Border>
-
-                <!--Столбец с Ценой-->
-                <Border BorderBrush="Black" BorderThickness="0,1,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="70" Margin="441,808,0,0">
-                    <TextBlock Margin="6,4,5,-1" Height="25" FontSize="18" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="Цена"/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="70" Margin="441,838,0,0">
-                    <TextBlock x:Name="adminPrice" Margin="6,4,5,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="70" Margin="441,868,0,0">
-                    <TextBlock x:Name="compPrice" Margin="6,4,5,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="70" Margin="441,898,0,0">
-                    <TextBlock x:Name="barbPrice" Margin="6,4,5,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="70" Margin="441,928,0,0">
-                    <TextBlock x:Name="seamstressPrice" Margin="6,4,5,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
-                </Border>
-
-                <!--Столбец с Суммой-->
-                <Border BorderBrush="Black" BorderThickness="0,1,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="90" Margin="511,808,0,0">
-                    <TextBlock Margin="10,4,13,-1" Height="25" FontSize="18" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="Сумма"/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="90" Margin="511,838,0,0">
-                    <TextBlock x:Name="adminSum" Margin="10,4,13,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="90" Margin="511,868,0,0">
-                    <TextBlock x:Name="compSum" Margin="10,4,13,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="90" Margin="511,898,0,0">
-                    <TextBlock x:Name="barbSum" Margin="10,4,13,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="90" Margin="511,928,0,0">
-                    <TextBlock x:Name="seamstressSum" Margin="10,4,13,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
-                </Border>
-                <!--Таблица: Техническое обслуживание-->
-                <TextBlock HorizontalAlignment="Left" Margin="12,612,0,0" TextWrapping="Wrap" Text="Техническое обслуживание" VerticalAlignment="Top" Width="589" Height="30" FontSize="22"/>
-                <!--Столбец с №-->
-                <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" Margin="12,647,0,0">
-                    <TextBlock Margin="5,4,5,-1" Height="25" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="18"><Run Text="№"/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="1,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" Margin="12,677,0,0">
-                    <TextBlock Margin="5,4,5,-1" Height="25" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="14"><Run Text="1"/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="1,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" Margin="12,707,0,0">
-                    <TextBlock Margin="5,4,5,-1" Height="25" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="14"><Run Text="2"/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="1,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" Margin="12,737,0,0">
-                    <TextBlock Margin="5,4,5,-1" Height="25" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="14"><Run Text="3"/></TextBlock>
-                </Border>
-                <!--Столбец с помещением-->
-                <Border BorderBrush="Black" BorderThickness="0,1,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="260" Margin="41,647,0,0">
-                    <TextBlock Margin="6,4,9,-1" Height="25" FontSize="18" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="Комната"/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="260" Margin="41,677,0,0">
-                    <TextBlock Margin="6,4,9,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="Администрация"/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="260" Margin="41,707,0,0">
-                    <TextBlock Margin="6,4,9,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="Компьютерный зал"/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="260" Margin="41,737,0,0">
-                    <TextBlock Margin="6,4,9,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="Парикмахерская"/></TextBlock>
-                </Border>
-                <!--Столбец с Кол-вом-->
-                <Border BorderBrush="Black" BorderThickness="0,1,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="80" Margin="301,647,0,0">
-                    <TextBlock Margin="10,4,7,-1" Height="25" FontSize="18" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="Кол-во"/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="80" Margin="301,677,0,0">
-                    <TextBlock x:Name="adminTechCount" Margin="10,4,7,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="80" Margin="301,707,0,0">
-                    <TextBlock x:Name="compTechCount" Margin="10,4,7,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="80" Margin="301,737,0,0">
-                    <TextBlock x:Name="barbTechCount" Margin="10,4,7,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
-                </Border>
-                <!--Столбец с Ед.-->
-                <Border BorderBrush="Black" BorderThickness="0,1,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="60" Margin="381,647,0,0">
-                    <TextBlock Margin="5,4,1,-1" Height="25" FontSize="18" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="Ед."/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="60" Margin="381,677,0,0">
-                    <TextBlock Margin="5,4,1,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="месяц"/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="60" Margin="381,707,0,0">
-                    <TextBlock Margin="5,4,1,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="месяц"/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="60" Margin="381,737,0,0">
-                    <TextBlock Margin="5,4,1,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="месяц"/></TextBlock>
-                </Border>
-                <!--Столбец с Ценой-->
-                <Border BorderBrush="Black" BorderThickness="0,1,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="70" Margin="441,647,0,0">
-                    <TextBlock Margin="6,4,5,-1" Height="25" FontSize="18" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="Цена"/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="70" Margin="441,677,0,0">
-                    <TextBlock x:Name="adminTechPrice" Margin="6,4,5,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="70" Margin="441,707,0,0">
-                    <TextBlock x:Name="compTechPrice" Margin="6,4,5,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="70" Margin="441,737,0,0">
-                    <TextBlock x:Name="barbTechPrice" Margin="6,4,5,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
-                </Border>
-                <!--Столбец с Суммой-->
-                <Border BorderBrush="Black" BorderThickness="0,1,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="90" Margin="511,647,0,0">
-                    <TextBlock Margin="10,4,13,-1" Height="25" FontSize="18" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="Сумма"/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="90" Margin="511,677,0,0">
-                    <TextBlock x:Name="adminTechSum" Margin="10,4,13,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="90" Margin="511,707,0,0">
-                    <TextBlock x:Name="compTechSum" Margin="10,4,13,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="90" Margin="511,737,0,0">
-                    <TextBlock x:Name="barbTechSum" Margin="10,4,13,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
-                </Border>
-
-                <!--Таблица: Отопление-->
-                <TextBlock HorizontalAlignment="Left" Margin="12,963,0,0" TextWrapping="Wrap" Text="Отопление" VerticalAlignment="Top" Width="589" Height="30" FontSize="22"/>
-                <!--Столбец с №-->
-                <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" Margin="12,996,0,0">
-                    <TextBlock Margin="5,4,5,-1" Height="25" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="18"><Run Text="№"/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="1,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" Margin="12,1026,0,0">
-                    <TextBlock Margin="5,4,5,-1" Height="25" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="14"><Run Text="1"/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="1,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" Margin="12,1056,0,0">
-                    <TextBlock Margin="5,4,5,-1" Height="25" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="14"><Run Text="2"/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="1,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" Margin="12,1086,0,0">
-                    <TextBlock Margin="5,4,5,-1" Height="25" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="14"><Run Text="3"/></TextBlock>
-                </Border>
-                <!--Столбец с помещением-->
-                <Border BorderBrush="Black" BorderThickness="0,1,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="260" Margin="41,996,0,0">
-                    <TextBlock Margin="6,4,9,-1" Height="25" FontSize="18" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="Комната"/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="260" Margin="41,1026,0,0">
-                    <TextBlock Margin="6,4,9,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="Администрация"/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="260" Margin="41,1056,0,0">
-                    <TextBlock Margin="6,4,9,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="Компьютерный зал"/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="260" Margin="41,1086,0,0">
-                    <TextBlock Margin="6,4,9,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="Парикмахерская"/></TextBlock>
-                </Border>
-                <!--Столбец с Кол-вом-->
-                <Border BorderBrush="Black" BorderThickness="0,1,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="80" Margin="301,996,0,0">
-                    <TextBlock Margin="10,4,7,-1" Height="25" FontSize="18" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="Кол-во"/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="80" Margin="301,1026,0,0">
-                    <TextBlock x:Name="adminHeatCount" Margin="10,4,7,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="80" Margin="301,1056,0,0">
-                    <TextBlock x:Name="compHeatCount" Margin="10,4,7,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="80" Margin="301,1086,0,0">
-                    <TextBlock x:Name="barbHeatCount" Margin="10,4,7,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
-                </Border>
-                <!--Столбец с Ед.-->
-                <Border BorderBrush="Black" BorderThickness="0,1,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="60" Margin="381,996,0,0">
-                    <TextBlock Margin="5,4,1,-1" Height="25" FontSize="18" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="Ед."/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="60" Margin="381,1026,0,0">
-                    <TextBlock Margin="5,4,1,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="месяц"/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="60" Margin="381,1056,0,0">
-                    <TextBlock Margin="5,4,1,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="месяц"/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="60" Margin="381,1086,0,0">
-                    <TextBlock Margin="5,4,1,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="месяц"/></TextBlock>
-                </Border>
-                <!--Столбец с Ценой-->
-                <Border BorderBrush="Black" BorderThickness="0,1,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="70" Margin="441,996,0,0">
-                    <TextBlock Margin="6,4,5,-1" Height="25" FontSize="18" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="Цена"/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="70" Margin="441,1026,0,0">
-                    <TextBlock x:Name="adminHeatPrice" Margin="6,4,5,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="70" Margin="441,1056,0,0">
-                    <TextBlock x:Name="compHeatPrice" Margin="6,4,5,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="70" Margin="441,1086,0,0">
-                    <TextBlock x:Name="barbHeatPrice" Margin="6,4,5,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
-                </Border>
-                <!--Столбец с Суммой-->
-                <Border BorderBrush="Black" BorderThickness="0,1,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="90" Margin="511,996,0,0">
-                    <TextBlock Margin="10,4,13,-1" Height="25" FontSize="18" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="Сумма"/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="90" Margin="511,1026,0,0">
-                    <TextBlock x:Name="adminHeatSum" Margin="10,4,13,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="90" Margin="511,1056,0,0">
-                    <TextBlock x:Name="compHeatSum" Margin="10,4,13,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="90" Margin="511,1086,0,0">
-                    <TextBlock x:Name="barbHeatSum" Margin="10,4,13,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
-                </Border>
-
-                <!--Таблица: Общее по помещениям-->
-                <TextBlock HorizontalAlignment="Left" Margin="12,422,0,0" TextWrapping="Wrap" Text="Комунальные услуги по помещениям" VerticalAlignment="Top" Width="589" Height="30" FontSize="22" FontWeight="Bold"/>
-                <!--Столбец с №-->
-                <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" Margin="12,457,0,0">
-                    <TextBlock Margin="5,4,5,-1" Height="25" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="16" FontWeight="Bold"><Run Text="№"/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="1,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" Margin="12,487,0,0">
-                    <TextBlock Margin="5,4,5,-1" Height="25" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="14" FontWeight="Bold"><Run Text="1"/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="1,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" Margin="12,517,0,0">
-                    <TextBlock Margin="5,4,5,-1" Height="25" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="14" FontWeight="Bold"><Run Text="2"/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="1,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" Margin="12,547,0,0">
-                    <TextBlock Margin="5,4,5,-1" Height="25" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="14" FontWeight="Bold"><Run Text="3"/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="1,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="30" Margin="12,577,0,0">
-                    <TextBlock Margin="5,4,5,-1" Height="25" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="14" FontWeight="Bold"><Run Text="4"/></TextBlock>
-                </Border>
-                <!--Столбец с помещением-->
-                <Border BorderBrush="Black" BorderThickness="0,1,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="157" Margin="41,457,0,0">
-                    <TextBlock Margin="6,4,9,-1" Height="25" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Center" FontWeight="Bold"><Run Text="Комната"/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="157" Margin="41,487,0,0">
-                    <TextBlock Margin="6,4,9,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center" FontWeight="Bold"><Run Text="Администрация"/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="157" Margin="41,517,0,0">
-                    <TextBlock Margin="6,4,9,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center" FontWeight="Bold"><Run Text="Компьютерный зал"/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="157" Margin="41,547,0,0">
-                    <TextBlock Margin="6,4,9,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center" FontWeight="Bold"><Run Text="Парикмахерская"/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="157" Margin="41,577,0,0">
-                    <TextBlock Margin="6,4,9,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center" FontWeight="Bold"><Run Text="Швея"/><LineBreak/><Run/><LineBreak/><Run Text="\"/></TextBlock>
-                </Border>
-                <!--Столбец с Тех. обслуживание-->
-                <Border BorderBrush="Black" BorderThickness="0,1,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="91" Margin="198,457,0,0">
-                    <TextBlock Margin="10,4,2,-1" Height="25" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Center" Width="78"><Run Text="Тех. обсл."/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="91" Margin="198,487,0,0">
-                    <TextBlock x:Name="adminTechTotalSum" Margin="10,4,7,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="91" Margin="198,517,0,0">
-                    <TextBlock x:Name="compTechTotalSum" Margin="10,4,7,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="91" Margin="198,547,0,0">
-                    <TextBlock x:Name="barbTechTotalSum" Margin="10,4,7,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="91" Margin="198,577,0,0">
-                    <TextBlock x:Name="seamstressTechTotalSum" Margin="10,4,7,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="0"/></TextBlock>
-                </Border>
-                <!--Столбец с Э/энергия-->
-                <Border BorderBrush="Black" BorderThickness="0,1,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="86" Margin="289,457,0,0">
-                    <TextBlock Margin="5,4,1,-1" Height="25" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="Э/энергия"/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="86" Margin="289,487,0,0">
-                    <TextBlock x:Name="adminEnergyTotalSum" Margin="5,4,1,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="86" Margin="289,517,0,0">
-                    <TextBlock x:Name="compEnergyTotalSum" Margin="5,4,1,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="86" Margin="289,547,0,0">
-                    <TextBlock x:Name="barbEnergyTotalSum" Margin="5,4,1,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="86" Margin="289,577,0,0">
-                    <TextBlock x:Name="seamstressEnergyTotalSum" Margin="5,4,1,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
-                </Border>
-                <!--Столбец с Отопление-->
-                <Border BorderBrush="Black" BorderThickness="0,1,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="90" Margin="375,457,0,0">
-                    <TextBlock Margin="6,4,5,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="Отопление"/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="90" Margin="375,487,0,0">
-                    <TextBlock x:Name="adminHeatTotalSum" Margin="6,4,5,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="90" Margin="375,517,0,0">
-                    <TextBlock x:Name="compHeatTotalSum" Margin="6,4,5,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="90" Margin="375,547,0,0">
-                    <TextBlock x:Name="barbHeatTotalSum" Margin="6,4,5,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="90" Margin="375,577,0,0">
-                    <TextBlock x:Name="seamstressHeatTotalSum" Margin="6,4,5,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="0"/></TextBlock>
-                </Border>
-                <!--Столбец с Вода-->
-                <Border BorderBrush="Black" BorderThickness="0,1,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="60" Margin="465,457,0,0">
-                    <TextBlock Margin="5,4,1,-1" Height="25" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="Вода"/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="60" Margin="465,487,0,0">
-                    <TextBlock x:Name="adminWaterTotalSum" Margin="5,4,1,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="0"/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="60" Margin="465,517,0,0">
-                    <TextBlock x:Name="compWaterTotalSum" Margin="5,4,1,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="0"/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="60" Margin="465,547,0,0">
-                    <TextBlock x:Name="barbWaterTotalSum" Margin="5,4,1,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="60" Margin="465,577,0,0">
-                    <TextBlock x:Name="seamstressWaterTotalSum" Margin="5,4,1,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="0"/></TextBlock>
-                </Border>
-
-
-                <!--Столбец с Суммой-->
-                <Border BorderBrush="Black" BorderThickness="0,1,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="76" Margin="525,457,0,0">
-                    <TextBlock Margin="10,4,13,-1" Height="25" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text="Сумма"/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="76" Margin="525,487,0,0">
-                    <TextBlock x:Name="adminTotalSum" Margin="10,4,13,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="76" Margin="525,517,0,0">
-                    <TextBlock x:Name="compTotalSum" Margin="10,4,13,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="76" Margin="525,547,0,0">
-                    <TextBlock x:Name="barbTotalSum" Margin="10,4,13,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
-                </Border>
-                <Border BorderBrush="Black" BorderThickness="0,0,1,1" HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="76" Margin="525,577,0,0">
-                    <TextBlock x:Name="seamstressTotalSum" Margin="10,4,13,-1" Height="25" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Center"><Run Text=""/></TextBlock>
-                </Border>
-            </Grid>
-        </ScrollViewer>
         <!--Столбец с кнопкой Подробнее-->
         <Menu Height="30" Grid.Row="0">
             <MenuItem Height="30" Header="Файл" FontSize="18">
@@ -616,6 +51,1265 @@
                 </MenuItem>
             </MenuItem>
         </Menu>
-        <TextBlock x:Name="hide" Visibility="Hidden" Text=""></TextBlock>
+        <TextBlock Grid.Row="0" x:Name="hide" Visibility="Hidden" Text=""/>
+
+        <ScrollViewer x:Name="ScrollViewerGridPrint" VerticalScrollBarVisibility="Auto" Margin="0,5,0,0" Grid.Row="1">
+
+            <StackPanel x:Name="PrintGrid" HorizontalAlignment="Center">
+                <!--Блок шапки документа-->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Margin="9,50,0,0"
+                               HorizontalAlignment="Left" VerticalAlignment="Top"
+                               TextWrapping="Wrap" Grid.Column="0" Grid.Row="0"
+                               Height="71" Width="280" FontSize="18">
+                        <Run Text="Исходящее № ____________"/><LineBreak/><Run/><LineBreak/>
+                        <Run Text="&quot;___&quot;__________ 20__ г."/>
+                    </TextBlock>
+                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top"
+                               TextWrapping="Wrap" Grid.Column="1" Grid.Row="0"
+                               Height="155" Width="273" FontSize="18">
+                        <Run FontWeight="Bold" FontSize="24" Text="Утверждено"/><LineBreak/>
+                        <Run Text="Руководитель ПРООМИ"/><LineBreak/>
+                        <Run Text="&quot;Бригантина Надежды&quot;"/><LineBreak/><Run/><LineBreak/>
+                        <Run Text="__________      А.И. Избасаров"/><LineBreak/><Run Text="   подпись"/>
+                    </TextBlock>
+                    <TextBlock x:Name="info_title"
+                               Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                               HorizontalAlignment="Left" VerticalAlignment="Top"
+                               TextWrapping="Wrap" FontSize="22" Width="589" Height="33"/>
+
+                </Grid>
+
+                <!--Разметка первой таблицы-->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="260"/>
+                        <ColumnDefinition Width="80"/>
+                        <ColumnDefinition Width="60"/>
+                        <ColumnDefinition Width="70"/>
+                        <ColumnDefinition Width="90"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Столбец с № -->
+                    <StackPanel Grid.Column="0" Grid.Row="0">
+                        <Border Style="{StaticResource BorderTable}" BorderThickness="1"
+                                Width="30">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       FontSize="18" Text="№"/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}" BorderThickness="1,0,1,1"
+                                Width="30">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       Text="1"/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}" BorderThickness="1,0,1,1"
+                                Width="30">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       Text="2"/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}" BorderThickness="1,0,1,1"
+                                Width="30">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       Text="3"/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}" BorderThickness="1,0,1,1"
+                                Width="30">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       Text="4"/>
+                        </Border>
+                    </StackPanel>
+
+                    <!--Столбец с Наименованием работ-->
+                    <StackPanel Grid.Column="1" Grid.Row="0">
+                        <Border Style="{StaticResource BorderTable}" BorderThickness="0,1,1,1"
+                                Width="260">
+                            <TextBlock Style="{StaticResource TextTable}" FontSize="18"
+                                       Text="Наименование работ, услуг"/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}" BorderThickness="0,0,1,1"
+                                Width="260">
+                            <TextBlock Style="{StaticResource TextTable}" x:Name="techName" 
+                                       Text=""/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}" BorderThickness="0,0,1,1"
+                                Width="260">
+                            <TextBlock Style="{StaticResource TextTable}" x:Name="energyName" 
+                                       Text=""/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}" BorderThickness="0,0,1,1"
+                                Width="260">
+                            <TextBlock Style="{StaticResource TextTable}" x:Name="heatName"
+                                       Text=""/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}" BorderThickness="0,0,1,1"
+                                Width="260">
+                            <TextBlock Style="{StaticResource TextTable}" x:Name="waterName" 
+                                       Text=""/>
+                        </Border>
+                    </StackPanel>
+
+                    <!--Столбец с Кол-вом -->
+                    <StackPanel Grid.Column="2" Grid.Row="0">
+                        <Border Style="{StaticResource BorderTable}" BorderThickness="0,1,1,1"
+                                Width="80">
+                            <TextBlock Style="{StaticResource TextTable}" FontSize="18"
+                                       Text="Кол-во"/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}" BorderThickness="0,0,1,1"
+                                Width="80">
+                            <TextBlock Style="{StaticResource TextTable}" x:Name="techCount"
+                                       Cursor="Hand"
+                                       Text="">
+                                <TextBlock.ToolTip>
+                                    <ToolTip HasDropShadow="True">
+                                        <StackPanel>
+                                            <TextBlock>Администрация: 11,6 м2</TextBlock>
+                                            <TextBlock>Компьютерный зал: 17,8 м2</TextBlock>
+                                            <TextBlock>Парикмахерская: 16,7 м2</TextBlock>
+                                        </StackPanel>
+                                    </ToolTip>
+                                </TextBlock.ToolTip>
+                            </TextBlock>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}" BorderThickness="0,0,1,1"
+                                Width="80">
+                            <TextBlock Style="{StaticResource TextTable}" x:Name="energyCount" 
+                                       Cursor="Hand"
+                                       Text="">
+                                <TextBlock.ToolTip>
+                                    <ToolTip HasDropShadow="True">
+                                        <StackPanel>
+                                            <TextBlock x:Name="countRoom1"/>
+                                            <TextBlock x:Name="countRoom2"/>
+                                            <TextBlock x:Name="countRoom3"/>
+                                            <TextBlock x:Name="countRoom4"/>
+                                        </StackPanel>
+                                    </ToolTip>
+                                </TextBlock.ToolTip>
+                            </TextBlock>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}" BorderThickness="0,0,1,1"
+                                Width="80">
+                            <TextBlock Style="{StaticResource TextTable}" x:Name="heatCount" 
+                                       Cursor="Hand"
+                                       Text="">
+                                <TextBlock.ToolTip>
+                                    <ToolTip HasDropShadow="True">
+                                        <StackPanel>
+                                            <TextBlock>Комната 1: 11,6 м2</TextBlock>
+                                            <TextBlock>Комната 2: 17,8 м2</TextBlock>
+                                            <TextBlock>Комната 3: 16,7 м2</TextBlock>
+                                        </StackPanel>
+                                    </ToolTip>
+                                </TextBlock.ToolTip>
+                            </TextBlock>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}" BorderThickness="0,0,1,1"
+                                Width="80">
+                            <TextBlock Style="{StaticResource TextTable}" x:Name="waterCount" 
+                                       Text=""/>
+                        </Border>
+                    </StackPanel>
+
+                    <!--Столбец с Ед.-->
+                    <StackPanel Grid.Column="3" Grid.Row="0">
+                        <Border Style="{StaticResource BorderTable}" BorderThickness="0,1,1,1"
+                                Width="60">
+                            <TextBlock Style="{StaticResource TextTable}" FontSize="18"
+                                       Text="Ед."/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}" BorderThickness="0,0,1,1"
+                                Width="60">
+                            <TextBlock Style="{StaticResource TextTable}" x:Name="techUnit" 
+                                       Text=""/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}" BorderThickness="0,0,1,1"
+                                Width="60">
+                            <TextBlock Style="{StaticResource TextTable}" x:Name="energyUnit"
+                                       Text=""/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}" BorderThickness="0,0,1,1"
+                                Width="60">
+                            <TextBlock Style="{StaticResource TextTable}" x:Name="heatUnit" 
+                                       Text=""/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}" BorderThickness="0,0,1,1"
+                                Width="60">
+                            <TextBlock Style="{StaticResource TextTable}" x:Name="waterUnit" 
+                                       Text=""/>
+                        </Border>
+                    </StackPanel>
+
+                    <!--Столбец с Ценой-->
+                    <StackPanel Grid.Column="4" Grid.Row="0">
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,1,1,1"
+                                Width="70">
+                            <TextBlock Style="{StaticResource TextTable}" 
+                                       FontSize="18"
+                                       Text="Цена"/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1" 
+                                Width="70">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       x:Name="techPrice" 
+                                       Text=""/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1"
+                                Width="70">
+                            <TextBlock Style="{StaticResource TextTable}" 
+                                       x:Name="energyPrice" 
+                                       Text=""/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1"
+                                Width="70">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       x:Name="heatPrice" 
+                                       Text=""/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1" 
+                                Width="70" >
+                            <TextBlock Style="{StaticResource TextTable}" 
+                                       x:Name="waterPrice" 
+                                       Text=""/>
+                        </Border>
+                    </StackPanel>
+
+                    <!--Столбец с Суммой-->
+                    <StackPanel Grid.Column="5" Grid.Row="0">
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,1,1,1" 
+                                Width="90">
+                            <TextBlock Style="{StaticResource TextTable}" 
+                                       FontSize="18"
+                                       Text="Сумма"/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1"
+                                Width="90">
+                            <TextBlock Style="{StaticResource TextTable}" 
+                                       x:Name="techSum" 
+                                       Cursor="Hand"
+                                       Text="">
+                                <TextBlock.ToolTip>
+                                    <ToolTip HasDropShadow="True">
+                                        <StackPanel>
+                                            <TextBlock x:Name="techSumRoom1"></TextBlock>
+                                            <TextBlock x:Name="techSumRoom2"></TextBlock>
+                                            <TextBlock x:Name="techSumRoom3"></TextBlock>
+                                        </StackPanel>
+                                    </ToolTip>
+                                </TextBlock.ToolTip>
+                            </TextBlock>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1" 
+                                Width="90">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       x:Name="energySum"
+                                       Cursor="Hand"
+                                       Text="">
+                                <TextBlock.ToolTip>
+                                    <ToolTip HasDropShadow="True">
+                                        <StackPanel>
+                                            <TextBlock x:Name="energySumRoom1"/>
+                                            <TextBlock x:Name="energySumRoom2"/>
+                                            <TextBlock x:Name="energySumRoom3"/>
+                                            <TextBlock x:Name="energySumRoom4"/>
+                                        </StackPanel>
+                                    </ToolTip>
+                                </TextBlock.ToolTip>
+                            </TextBlock>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1"
+                                Width="90">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       x:Name="heatSum"
+                                       Cursor="Hand"
+                                       Text="">
+                                <TextBlock.ToolTip>
+                                    <ToolTip HasDropShadow="True">
+                                        <StackPanel>
+                                            <TextBlock x:Name="heatSumRoom1"></TextBlock>
+                                            <TextBlock x:Name="heatSumRoom2"></TextBlock>
+                                            <TextBlock x:Name="heatSumRoom3"></TextBlock>
+                                        </StackPanel>
+                                    </ToolTip>
+                                </TextBlock.ToolTip>
+                            </TextBlock>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1"
+                                Width="90">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       x:Name="waterSum" 
+                                       Text=""/>
+                        </Border>
+                    </StackPanel>
+
+                    <!--Строка "Итого"-->
+                    <StackPanel Grid.Column="0" Grid.ColumnSpan="6"
+                                Grid.Row="1"
+                                Orientation="Horizontal">
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="1,0,1,1"
+                                Width="290">
+                            <TextBlock Style="{StaticResource TextTable}" 
+                                       FontSize="18" FontWeight="Bold"
+                                       Text="Итого:" />
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1"
+                                Width="300">
+                            <TextBlock Style="{StaticResource TextTable}" 
+                                       x:Name="TotalSum" 
+                                       FontSize="18" FontWeight="Bold" Foreground="#FFFF0B0B"
+                                       Text=""/>
+                        </Border>
+                    </StackPanel>
+                </Grid>
+
+                <!--Таблица: Общее по помещениям-->
+                <TextBlock Style="{StaticResource TextTable}"
+                           HorizontalAlignment="Left" 
+                           Margin="0,15,0,0" TextWrapping="Wrap" 
+                           Text="Комунальные услуги по помещениям"
+                           Width="589" Height="30" FontSize="22" FontWeight="Bold" />
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="157"/>
+                        <ColumnDefinition Width="91"/>
+                        <ColumnDefinition Width="86"/>
+                        <ColumnDefinition Width="90"/>
+                        <ColumnDefinition Width="60"/>
+                        <ColumnDefinition Width="76"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--Столбец с №-->
+                    <StackPanel Grid.Column="0">
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="1" 
+                                Width="30">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       FontSize="16" FontWeight="Bold"
+                                       Text="№"/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}" 
+                                BorderThickness="1,0,1,1" 
+                                Width="30">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       FontWeight="Bold"
+                                       Text="1"/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}" 
+                                BorderThickness="1,0,1,1" 
+                                Width="30">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       FontWeight="Bold"
+                                       Text="2"/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="1,0,1,1" 
+                                Width="30">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       FontWeight="Bold"
+                                       Text="3"/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="1,0,1,1"
+                                Width="30">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       FontWeight="Bold"
+                                       Text="4"/>
+                        </Border>
+                    </StackPanel>
+
+                    <!--Столбец с помещением-->
+                    <StackPanel Grid.Column="1">
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,1,1,1"
+                                Width="157">
+                            <TextBlock Style="{StaticResource TextTable}" 
+                                       FontSize="16" FontWeight="Bold"
+                                       Text="Комната"/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1" 
+                                Width="157">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       FontWeight="Bold"
+                                       Text="Администрация"/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1"
+                                Width="157">
+                            <TextBlock Style="{StaticResource TextTable}" 
+                                       FontWeight="Bold"
+                                       Text="Компьютерный зал"/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1" 
+                                Width="157">
+                            <TextBlock Style="{StaticResource TextTable}" 
+                                       FontWeight="Bold"
+                                       Text="Парикмахерская"/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1" 
+                                Width="157">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       FontWeight="Bold"
+                                       Text="Швея"/>
+                        </Border>
+                    </StackPanel>
+
+                    <!--Столбец с Тех. обслуживание-->
+                    <StackPanel Grid.Column="2">
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,1,1,1"
+                                Width="91">
+                            <TextBlock Style="{StaticResource TextTable}" 
+                                       Margin="10,4,2,-1" 
+                                       FontSize="16"
+                                       Width="78"
+                                       Text="Тех. обсл."/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1"
+                                Width="91">
+                            <TextBlock Style="{StaticResource TextTable}" 
+                                       x:Name="adminTechTotalSum" 
+                                       Text=""/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1"
+                                Width="91">
+                            <TextBlock Style="{StaticResource TextTable}" 
+                                       x:Name="compTechTotalSum"
+                                       Text=""/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1"
+                                Width="91">
+                            <TextBlock Style="{StaticResource TextTable}" 
+                                       x:Name="barbTechTotalSum" 
+                                       Text=""/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1"
+                                Width="91">
+                            <TextBlock Style="{StaticResource TextTable}" 
+                                       x:Name="seamstressTechTotalSum" 
+                                       Text="0"/>
+                        </Border>
+                    </StackPanel>
+
+                    <!--Столбец с Э/энергия-->
+                    <StackPanel Grid.Column="3">
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,1,1,1" Width="86">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       FontSize="16"
+                                       Text="Э/энергия"/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1" 
+                                Width="86">
+                            <TextBlock Style="{StaticResource TextTable}" 
+                                       x:Name="adminEnergyTotalSum"
+                                       Text=""/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1" 
+                                Width="86">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       x:Name="compEnergyTotalSum"
+                                       Text=""/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1" 
+                                Width="86">
+                            <TextBlock Style="{StaticResource TextTable}" 
+                                       x:Name="barbEnergyTotalSum"
+                                       Text=""/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1"
+                                Width="86">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       x:Name="seamstressEnergyTotalSum"
+                                       Text=""/>
+                        </Border>
+                    </StackPanel>
+
+                    <!--Столбец с Отопление-->
+                    <StackPanel Grid.Column="4">
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,1,1,1"
+                                Width="90">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       Text="Отопление"/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1"
+                                Width="90">
+                            <TextBlock Style="{StaticResource TextTable}" 
+                                       x:Name="adminHeatTotalSum"
+                                       Text=""/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1" 
+                                Width="90">
+                            <TextBlock Style="{StaticResource TextTable}" 
+                                       x:Name="compHeatTotalSum"
+                                       Text=""/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1"
+                                Width="90">
+                            <TextBlock Style="{StaticResource TextTable}" 
+                                       x:Name="barbHeatTotalSum"
+                                       Text=""/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1" 
+                                Width="90">
+                            <TextBlock Style="{StaticResource TextTable}" 
+                                       x:Name="seamstressHeatTotalSum"
+                                       Text="0"/>
+                        </Border>
+                    </StackPanel>
+
+                    <!--Столбец с Вода-->
+                    <StackPanel Grid.Column="5">
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,1,1,1" 
+                                Width="60">
+                            <TextBlock Style="{StaticResource TextTable}" 
+                                       FontSize="16"
+                                       Text="Вода"/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1"
+                                Width="60">
+                            <TextBlock Style="{StaticResource TextTable}" 
+                                       x:Name="adminWaterTotalSum" 
+                                       Text="0"/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1"
+                                Width="60">
+                            <TextBlock Style="{StaticResource TextTable}" 
+                                       x:Name="compWaterTotalSum"
+                                       Text="0"/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1"
+                                Width="60">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       x:Name="barbWaterTotalSum"
+                                       Text=""/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1" 
+                                Width="60">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       x:Name="seamstressWaterTotalSum" 
+                                       Text="0"/>
+                        </Border>
+                    </StackPanel>
+
+                    <!--Столбец с Суммой-->
+                    <StackPanel Grid.Column="6">
+                        <Border Style="{StaticResource BorderTable}" BorderThickness="0,1,1,1"
+                                Width="76">
+                            <TextBlock Style="{StaticResource TextTable}" FontSize="16"
+                                       Text="Сумма"/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}" BorderThickness="0,0,1,1"
+                                Width="76">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       x:Name="adminTotalSum"
+                                       Text=""/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}" BorderThickness="0,0,1,1"
+                                Width="76">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       x:Name="compTotalSum" 
+                                       Text=""/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}" BorderThickness="0,0,1,1"
+                                Width="76">
+                            <TextBlock Style="{StaticResource TextTable}" 
+                                       x:Name="barbTotalSum"
+                                       Text=""/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}" BorderThickness="0,0,1,1"
+                                Width="76">
+                            <TextBlock Style="{StaticResource TextTable}" 
+                                       x:Name="seamstressTotalSum"
+                                       Text=""/>
+                        </Border>
+                    </StackPanel>
+
+                </Grid>
+
+                <!--Таблица: Техническое обслуживание-->
+                <TextBlock Style="{StaticResource TextTable}"
+                           HorizontalAlignment="Left"
+                           Margin="0,15,0,0" TextWrapping="Wrap"
+                           Text="Техническое обслуживание" 
+                           Width="589" Height="30" FontSize="22"/>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="260"/>
+                        <ColumnDefinition Width="80"/>
+                        <ColumnDefinition Width="60"/>
+                        <ColumnDefinition Width="70"/>
+                        <ColumnDefinition Width="90"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--Столбец с №-->
+                    <StackPanel Grid.Column="0">
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="1"
+                                Width="30">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       FontSize="18"
+                                       Text="№"/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="1,0,1,1"
+                                Width="30">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       Text="1"/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="1,0,1,1"
+                                Width="30">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       Text="2"/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="1,0,1,1"
+                                Width="30">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       Text="3"/>
+                        </Border>
+                    </StackPanel>
+
+                    <!--Столбец с помещением-->
+                    <StackPanel Grid.Column="1">
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,1,1,1"
+                                Width="260">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       FontSize="18"
+                                       Text="Комната"/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1"
+                                Width="260">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       Text="Администрация"/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1"
+                                Width="260">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       Text="Компьютерный зал"/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1"
+                                Width="260">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       Text="Парикмахерская"/>
+                        </Border>
+                    </StackPanel>
+
+                    <!--Столбец с Кол-вом-->
+                    <StackPanel Grid.Column="2">
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,1,1,1"
+                                Width="80">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       Text="Кол-во"/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1"
+                                Width="80">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       x:Name="adminTechCount"
+                                       Text=""/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1"
+                                Width="80">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       x:Name="compTechCount"
+                                       Text=""/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1"
+                                Width="80">
+                            <TextBlock Style="{StaticResource TextTable}" 
+                                       x:Name="barbTechCount"
+                                       Text=""/>
+                        </Border>
+                    </StackPanel>
+
+                    <!--Столбец с Ед.-->
+                    <StackPanel Grid.Column="3">
+                        <Border Style="{StaticResource BorderTable}" BorderThickness="0,1,1,1"
+                                Width="60">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       Text="Ед."/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1"
+                                Width="60">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       Text="месяц"/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1"
+                                Width="60">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       Text="месяц"/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1"
+                                Width="60">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       Text="месяц"/>
+                        </Border>
+                    </StackPanel>
+
+                    <!--Столбец с Ценой-->
+                    <StackPanel Grid.Column="4">
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,1,1,1"
+                                Width="70">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       Text="Цена"/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1"
+                                Width="70">
+                            <TextBlock Style="{StaticResource TextTable}" 
+                                       x:Name="adminTechPrice"
+                                       Text=""/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1"
+                                Width="70">
+                            <TextBlock Style="{StaticResource TextTable}" 
+                                       x:Name="compTechPrice"
+                                       Text=""/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1"
+                                Width="70">
+                            <TextBlock Style="{StaticResource TextTable}" 
+                                       x:Name="barbTechPrice"
+                                       Text=""/>
+                        </Border>
+                    </StackPanel>
+
+                    <!--Столбец с Суммой-->
+                    <StackPanel Grid.Column="5">
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,1,1,1"
+                                Width="90">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       FontSize="18"
+                                       Text="Сумма"/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1"
+                                Width="90">
+                            <TextBlock Style="{StaticResource TextTable}" 
+                                       x:Name="adminTechSum"
+                                       Text=""/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1"
+                                Width="90">
+                            <TextBlock Style="{StaticResource TextTable}" 
+                                       x:Name="compTechSum"
+                                       Text=""/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1"
+                                Width="90">
+                            <TextBlock Style="{StaticResource TextTable}" 
+                                       x:Name="barbTechSum"
+                                       Text=""/>
+                        </Border>
+                    </StackPanel>
+
+                </Grid>
+
+                <!--Таблица электроэнергии-->
+                <TextBlock Style="{StaticResource TextTable}"
+                           HorizontalAlignment="Left"
+                           Margin="0,15,0,0" TextWrapping="Wrap" 
+                           Text="Электроэнергия"
+                           Width="589" Height="30" FontSize="22"/>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="260"/>
+                        <ColumnDefinition Width="80"/>
+                        <ColumnDefinition Width="60"/>
+                        <ColumnDefinition Width="70"/>
+                        <ColumnDefinition Width="90"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--Столбец с №-->
+                    <StackPanel Grid.Column="0">
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="1"
+                                Width="30">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       FontSize="18"
+                                       Text="№"/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="1,0,1,1"
+                                Width="30">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       Text="1"/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="1,0,1,1"
+                                Width="30">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       Text="2"/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="1,0,1,1"
+                                Width="30">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       Text="3"/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="1,0,1,1"
+                                Width="30">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       Text="4"/>
+                        </Border>
+                    </StackPanel>
+
+                    <!--Столбец с помещением-->
+                    <StackPanel Grid.Column="1">
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,1,1,1"
+                                Width="260">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       FontSize="18"
+                                       Text="Комната"/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1"
+                                Width="260">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       Text="Администрация"/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1"
+                                Width="260">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       Text="Компьютерный зал"/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1"
+                                Width="260">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       Text="Парикмахерская"/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1"
+                                Width="260">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       Text="Швея"/>
+                        </Border>
+                    </StackPanel>
+
+                    <!--Столбец с Кол-вом-->
+                    <StackPanel Grid.Column="2">
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,1,1,1"
+                                Width="80">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       Text="Кол-во"/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1"
+                                Width="80">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       x:Name="adminCount"
+                                       Text=""/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1"
+                                Width="80">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       x:Name="compCount"
+                                       Text=""/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1"
+                                Width="80">
+                            <TextBlock Style="{StaticResource TextTable}" 
+                                       x:Name="barbCount"
+                                       Text=""/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1"
+                                Width="80">
+                            <TextBlock Style="{StaticResource TextTable}" 
+                                       x:Name="seamstressCount"
+                                       Text=""/>
+                        </Border>
+                    </StackPanel>
+
+                    <!--Столбец с Ед.-->
+                    <StackPanel Grid.Column="3">
+                        <Border Style="{StaticResource BorderTable}" BorderThickness="0,1,1,1"
+                                Width="60">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       Text="Ед."/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1"
+                                Width="60">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       Text="кВт"/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1"
+                                Width="60">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       Text="кВт"/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1"
+                                Width="60">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       Text="кВт"/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1"
+                                Width="60">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       Text="кВт"/>
+                        </Border>
+                    </StackPanel>
+
+                    <!--Столбец с Ценой-->
+                    <StackPanel Grid.Column="4">
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,1,1,1"
+                                Width="70">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       Text="Цена"/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1"
+                                Width="70">
+                            <TextBlock Style="{StaticResource TextTable}" 
+                                       x:Name="adminPrice"
+                                       Text=""/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1"
+                                Width="70">
+                            <TextBlock Style="{StaticResource TextTable}" 
+                                       x:Name="compPrice"
+                                       Text=""/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1"
+                                Width="70">
+                            <TextBlock Style="{StaticResource TextTable}" 
+                                       x:Name="barbPrice"
+                                       Text=""/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1"
+                                Width="70">
+                            <TextBlock Style="{StaticResource TextTable}" 
+                                       x:Name="seamstressPrice"
+                                       Text=""/>
+                        </Border>
+                    </StackPanel>
+
+                    <!--Столбец с Суммой-->
+                    <StackPanel Grid.Column="5">
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,1,1,1"
+                                Width="90">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       FontSize="18"
+                                       Text="Сумма"/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1"
+                                Width="90">
+                            <TextBlock Style="{StaticResource TextTable}" 
+                                       x:Name="adminSum"
+                                       Text=""/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1"
+                                Width="90">
+                            <TextBlock Style="{StaticResource TextTable}" 
+                                       x:Name="compSum"
+                                       Text=""/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1"
+                                Width="90">
+                            <TextBlock Style="{StaticResource TextTable}" 
+                                       x:Name="barbSum"
+                                       Text=""/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1"
+                                Width="90">
+                            <TextBlock Style="{StaticResource TextTable}" 
+                                       x:Name="seamstressSum"
+                                       Text=""/>
+                        </Border>
+                    </StackPanel>
+
+                </Grid>
+
+                <!--Таблица: Отопление-->
+                <TextBlock Style="{StaticResource TextTable}"
+                           HorizontalAlignment="Left"
+                           Margin="0,15,0,0" TextWrapping="Wrap"
+                           Text="Отопление"
+                           Width="589" Height="30" FontSize="22" />
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="260"/>
+                        <ColumnDefinition Width="80"/>
+                        <ColumnDefinition Width="60"/>
+                        <ColumnDefinition Width="70"/>
+                        <ColumnDefinition Width="90"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--Столбец с №-->
+                    <StackPanel Grid.Column="0">
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="1"
+                                Width="30">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       FontSize="18"
+                                       Text="№"/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="1,0,1,1"
+                                Width="30">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       Text="1"/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="1,0,1,1"
+                                Width="30">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       Text="2"/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="1,0,1,1"
+                                Width="30">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       Text="3"/>
+                        </Border>
+                    </StackPanel>
+
+                    <!--Столбец с помещением-->
+                    <StackPanel Grid.Column="1">
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,1,1,1"
+                                Width="260">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       FontSize="18"
+                                       Text="Комната"/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1"
+                                Width="260">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       Text="Администрация"/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1"
+                                Width="260">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       Text="Компьютерный зал"/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1"
+                                Width="260">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       Text="Парикмахерская"/>
+                        </Border>
+                    </StackPanel>
+
+                    <!--Столбец с Кол-вом-->
+                    <StackPanel Grid.Column="2">
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,1,1,1"
+                                Width="80">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       Text="Кол-во"/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1"
+                                Width="80">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       x:Name="adminHeatCount"
+                                       Text=""/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1"
+                                Width="80">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       x:Name="compHeatCount"
+                                       Text=""/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1"
+                                Width="80">
+                            <TextBlock Style="{StaticResource TextTable}" 
+                                       x:Name="barbHeatCount"
+                                       Text=""/>
+                        </Border>
+                    </StackPanel>
+
+                    <!--Столбец с Ед.-->
+                    <StackPanel Grid.Column="3">
+                        <Border Style="{StaticResource BorderTable}" BorderThickness="0,1,1,1"
+                                Width="60">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       Text="Ед."/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1"
+                                Width="60">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       Text="месяц"/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1"
+                                Width="60">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       Text="месяц"/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1"
+                                Width="60">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       Text="месяц"/>
+                        </Border>
+                    </StackPanel>
+
+                    <!--Столбец с Ценой-->
+                    <StackPanel Grid.Column="4">
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,1,1,1"
+                                Width="70">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       Text="Цена"/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1"
+                                Width="70">
+                            <TextBlock Style="{StaticResource TextTable}" 
+                                       x:Name="adminHeatPrice"
+                                       Text=""/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1"
+                                Width="70">
+                            <TextBlock Style="{StaticResource TextTable}" 
+                                       x:Name="compHeatPrice"
+                                       Text=""/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1"
+                                Width="70">
+                            <TextBlock Style="{StaticResource TextTable}" 
+                                       x:Name="barbHeatPrice"
+                                       Text=""/>
+                        </Border>
+                    </StackPanel>
+
+                    <!--Столбец с Суммой-->
+                    <StackPanel Grid.Column="5">
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,1,1,1"
+                                Width="90">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       FontSize="18"
+                                       Text="Сумма"/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1"
+                                Width="90">
+                            <TextBlock Style="{StaticResource TextTable}" 
+                                       x:Name="adminHeatSum"
+                                       Text=""/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1"
+                                Width="90">
+                            <TextBlock Style="{StaticResource TextTable}" 
+                                       x:Name="compHeatSum"
+                                       Text=""/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1"
+                                Width="90">
+                            <TextBlock Style="{StaticResource TextTable}" 
+                                       x:Name="barbHeatSum"
+                                       Text=""/>
+                        </Border>
+                    </StackPanel>
+
+                </Grid>
+
+            </StackPanel>
+
+        </ScrollViewer>
+
     </Grid>
 </Window>

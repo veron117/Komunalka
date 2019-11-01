@@ -56,4 +56,19 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+
+    <Style x:Key="BorderTable" TargetType="{x:Type Border}">
+        <Setter Property="BorderBrush" Value="Black"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="Height" Value="30"/>
+    </Style>
+
+    <Style x:Key="TextTable" TargetType="{x:Type TextBlock}">
+        <Setter Property="Height" Value="25"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="Margin" Value="5,4,5,-1"/>
+    </Style>
 </ResourceDictionary>
