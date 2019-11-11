@@ -42,6 +42,11 @@ namespace Komunalka
                         {
                             if (elem.Attribute("id").Value == "tech")
                             {
+                                adminTechCount.Text = "11,6";
+                                compTechCount.Text = "17,8";
+                                barbTechCount.Text = "10,7";
+                                seamstressTechCount.Text = "6";
+
                                 techName.Text = elem.Element("namejob").Value;
                                 techCount.Text = elem.Element("count").Value;
                                 techUnit.Text = elem.Element("unit").Value;
@@ -49,25 +54,28 @@ namespace Komunalka
                                 techSum.Text = elem.Element("summa").Value;
                                 double techsummroom1 = double.Parse("11,6") * double.Parse(elem.Element("price").Value),
                                        techsummroom2 = double.Parse("17,8") * double.Parse(elem.Element("price").Value),
-                                       techsummroom3 = double.Parse("16,7") * double.Parse(elem.Element("price").Value);
+                                       techsummroom3 = double.Parse(barbTechCount.Text) * double.Parse(elem.Element("price").Value),
+                                       techsummroom4 = double.Parse(seamstressTechCount.Text) * double.Parse(elem.Element("price").Value);
                                 techsummroom1 = Math.Round(techsummroom1, 2);
                                 techsummroom2 = Math.Round(techsummroom2, 2);
                                 techsummroom3 = Math.Round(techsummroom3, 2);
+                                techsummroom4 = Math.Round(techsummroom4, 2);
+
                                 techSumRoom1.Text = "Администрация: " + techsummroom1 + " руб.";
                                 techSumRoom2.Text = "Компьютерный зал: " + techsummroom2 + " руб.";
                                 techSumRoom3.Text = "Парикмахерская: " + techsummroom3 + " руб.";
+                                techSumRoom4.Text = "Швея: " + techsummroom4 + " руб.";
                                 
-                                adminTechCount.Text = "11,6";
-                                compTechCount.Text = "17,8";
-                                barbTechCount.Text = "16,7";
 
                                 adminTechPrice.Text = elem.Element("price").Value;
                                 compTechPrice.Text = elem.Element("price").Value;
                                 barbTechPrice.Text = elem.Element("price").Value;
+                                seamstressTechPrice.Text = elem.Element("price").Value;
 
                                 adminTechSum.Text = techsummroom1.ToString();
                                 compTechSum.Text = techsummroom2.ToString();
                                 barbTechSum.Text = techsummroom3.ToString();
+                                seamstressTechSum.Text = techsummroom4.ToString();
                             }
                             if (elem.Attribute("id").Value == "energy")
                             {
@@ -146,7 +154,7 @@ namespace Komunalka
                             if (elem.Attribute("id").Value == "water")
                             {
                                 waterName.Text = elem.Element("namejob").Value;
-                                var count = double.Parse(elem.Element("count").Value) - oldData.Item5;
+                                var count = double.Parse(elem.Element("count").Value) - oldData.Item6;
                                 waterCount.Text = count.ToString();
                                 waterUnit.Text = elem.Element("unit").Value;
                                 waterPrice.Text = elem.Element("price").Value;
@@ -171,6 +179,7 @@ namespace Komunalka
                 compHeatTotalSum.Text = compHeatSum.Text;
 
                 barbTechTotalSum.Text = barbTechSum.Text;
+                seamstressTechTotalSum.Text = seamstressTechSum.Text;
                 barbEnergyTotalSum.Text = barbSum.Text;
                 barbHeatTotalSum.Text = barbHeatSum.Text;
                 barbWaterTotalSum.Text = waterSum.Text;
@@ -191,8 +200,32 @@ namespace Komunalka
         private void PrintBtn_Click(object sender, RoutedEventArgs e)
         {
             var printDialog = new PrintDialog();
-            var fixDoc = PrintHelper.GetFixedDocument(PrintGrid, printDialog);
-            PrintHelper.ShowPrintPreview(fixDoc);
+            if (printDialog.ShowDialog() == true)
+            {
+                // Скрыть Grid
+                //MainGrid.Visibility = Visibility.Hidden;
+
+                // Увеличить размер в 5 раз
+                PrintGrid.LayoutTransform = new ScaleTransform(1, 1);
+
+                // Определить поля
+                var pageMargin = 5;
+
+                // Получить размер страницы
+                var pageSize = new Size(printDialog.PrintableAreaWidth - pageMargin * 2,
+                    printDialog.PrintableAreaHeight - 20);
+
+                // Инициировать установку размера элемента
+                PrintGrid.Measure(pageSize);
+                PrintGrid.Arrange(new Rect(pageMargin, pageMargin + 10, pageSize.Width, pageSize.Height));
+
+                // Напечатать элемент
+                printDialog.PrintVisual(PrintGrid, "Распечатываем платёжку");
+
+                // Удалить трансформацию и снова сделать элемент видимым
+                PrintGrid.LayoutTransform = null;
+                //MainGrid.Visibility = Visibility.Visible;
+            }
         }
 
         private void PrintMail_OnClick(object sender, RoutedEventArgs e)

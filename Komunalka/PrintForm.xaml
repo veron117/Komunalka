@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Loaded="Window_Loaded"
-        Title="" Height="800" Width="640"
+        Title=""
+        Height="820" Width="640"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
         Icon="logo.png" FontFamily="Tahoma"
@@ -13,7 +14,8 @@
         HorizontalContentAlignment="Right"
         ScrollViewer.HorizontalScrollBarVisibility="Auto"
         ScrollViewer.VerticalScrollBarVisibility="Auto"
-        Margin="0" Padding="0,0,0,20">
+        Margin="0" Padding="0,0,0,20"
+        d:DesignHeight="1800">
     <Grid x:Name="MainGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="30*"/>
@@ -66,10 +68,10 @@
                         <RowDefinition/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <TextBlock Margin="9,50,0,0"
+                    <TextBlock Margin="9,57,0,0"
                                HorizontalAlignment="Left" VerticalAlignment="Top"
                                TextWrapping="Wrap" Grid.Column="0" Grid.Row="0"
-                               Height="71" Width="280" FontSize="18">
+                               Height="71" Width="280" FontSize="16">
                         <Run Text="Исходящее № ____________"/><LineBreak/><Run/><LineBreak/>
                         <Run Text="&quot;___&quot;__________ 20__ г."/>
                     </TextBlock>
@@ -314,6 +316,7 @@
                                             <TextBlock x:Name="techSumRoom1"></TextBlock>
                                             <TextBlock x:Name="techSumRoom2"></TextBlock>
                                             <TextBlock x:Name="techSumRoom3"></TextBlock>
+                                            <TextBlock x:Name="techSumRoom4"></TextBlock>
                                         </StackPanel>
                                     </ToolTip>
                                 </TextBlock.ToolTip>
@@ -520,7 +523,7 @@
                                 Width="91">
                             <TextBlock Style="{StaticResource TextTable}" 
                                        x:Name="seamstressTechTotalSum" 
-                                       Text="0"/>
+                                       Text=""/>
                         </Border>
                     </StackPanel>
 
@@ -718,6 +721,12 @@
                             <TextBlock Style="{StaticResource TextTable}"
                                        Text="3"/>
                         </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="1,0,1,1"
+                                Width="30">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       Text="4"/>
+                        </Border>
                     </StackPanel>
 
                     <!--Столбец с помещением-->
@@ -746,6 +755,12 @@
                                 Width="260">
                             <TextBlock Style="{StaticResource TextTable}"
                                        Text="Парикмахерская"/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1"
+                                Width="260">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       Text="Швея"/>
                         </Border>
                     </StackPanel>
 
@@ -778,6 +793,13 @@
                                        x:Name="barbTechCount"
                                        Text=""/>
                         </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1"
+                                Width="80">
+                            <TextBlock Style="{StaticResource TextTable}" 
+                                       x:Name="seamstressTechCount"
+                                       Text=""/>
+                        </Border>
                     </StackPanel>
 
                     <!--Столбец с Ед.-->
@@ -786,6 +808,12 @@
                                 Width="60">
                             <TextBlock Style="{StaticResource TextTable}"
                                        Text="Ед."/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1"
+                                Width="60">
+                            <TextBlock Style="{StaticResource TextTable}"
+                                       Text="месяц"/>
                         </Border>
                         <Border Style="{StaticResource BorderTable}"
                                 BorderThickness="0,0,1,1"
@@ -836,6 +864,13 @@
                                        x:Name="barbTechPrice"
                                        Text=""/>
                         </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1"
+                                Width="70">
+                            <TextBlock Style="{StaticResource TextTable}" 
+                                       x:Name="seamstressTechPrice"
+                                       Text=""/>
+                        </Border>
                     </StackPanel>
 
                     <!--Столбец с Суммой-->
@@ -866,6 +901,13 @@
                                 Width="90">
                             <TextBlock Style="{StaticResource TextTable}" 
                                        x:Name="barbTechSum"
+                                       Text=""/>
+                        </Border>
+                        <Border Style="{StaticResource BorderTable}"
+                                BorderThickness="0,0,1,1"
+                                Width="90">
+                            <TextBlock Style="{StaticResource TextTable}" 
+                                       x:Name="seamstressTechSum"
                                        Text=""/>
                         </Border>
                     </StackPanel>
